@@ -25,22 +25,42 @@ export const CustomResultView = ({
 
             {/* Use the 'snippet' property of fields with dangerouslySetInnerHtml to render snippets */}
             <ul className="sui-result__details">
+                {
+                    result.subtitle &&
+                    <li>
+                        {/*<span className="sui-result__key">keywords</span>*/}
+                        <span className="sui-result__value"><b>{result.subtitle?.raw}</b></span>
+                    </li>
+                }
                 <li>
                     <span className="sui-result__key">category</span>
                     <span className="sui-result__value">{result.category?.raw}</span>
                 </li>
+                {
+                    result.sub_category?.raw &&
+                    <li>
+                        <span className="sui-result__key">sub-category</span>
+                        <span className="sui-result__value">{result.sub_category?.raw}</span>
+                    </li>
+                }
                 <li>
-                    <span className="sui-result__key">sub-category</span>
-                    <span className="sui-result__value">{result.sub_category?.raw}</span>
-                </li>
-                <li>
-                    <span className="sui-result__key">short description</span>
+                    {/*<span className="sui-result__key">short description</span>*/}
                     <span className="sui-result__value" dangerouslySetInnerHTML={{__html: result.meta_description?.raw}}/>
                 </li>
-                <li>
-                    <span className="sui-result__key">main content</span>
-                    <span className="sui-result__value" dangerouslySetInnerHTML={{__html: result.body_content?.snippet}}/>
-                </li>
+                {
+                    result.body_content?.snippet &&
+                    <li>
+                        <span className="sui-result__key">snippet</span>
+                        <span className="sui-result__value" dangerouslySetInnerHTML={{__html: result.body_content?.snippet}}/>
+                    </li>
+                }
+                {
+                    result.traits?.raw &&
+                    <li>
+                        <span className="sui-result__key">traits</span>
+                        <span className="sui-result__value">{Object.values(result.traits?.raw).join(", ")}</span>
+                    </li>
+                }
                 {
                     result.meta_keywords &&
                     <li>

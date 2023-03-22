@@ -45,7 +45,9 @@ const config: SearchDriverOptions = {
         }
       },
       body_content: {
-        raw: {}
+        snippet: {
+          fallback: true
+        }
       },
       thumbnail_url: {
         raw: {}
@@ -61,6 +63,12 @@ const config: SearchDriverOptions = {
       },
       sub_category: {
         raw: {}
+      },
+      subtitle: {
+        raw: {}
+      },
+      traits: {
+        raw: {}
       }
     },
     search_fields: {
@@ -74,6 +82,7 @@ const config: SearchDriverOptions = {
     facets: {
       category: { type: "value", size: 30 },
       sub_category: { type: "value", size: 30 },
+      traits: { type: "value", size: 30 },
       meta_keywords: { type: "value", size: 30 },
     },
     disjunctiveFacets: ["meta_keywords"],
@@ -109,6 +118,11 @@ export default function App() {
                             <Facet
                                 field="sub_category"
                                 label="Sub-Category"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="traits"
+                                label="Traits"
                                 isFilterable={true}
                             />
                             <Facet
