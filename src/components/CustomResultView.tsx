@@ -35,7 +35,7 @@ export const CustomResultView = ({
                 </li>
                 <li>
                     <span className="sui-result__key">short description</span>
-                    <span className="sui-result__value" dangerouslySetInnerHTML={{__html: result.meta_description?.snippet}}/>
+                    <span className="sui-result__value" dangerouslySetInnerHTML={{__html: result.meta_description?.raw}}/>
                 </li>
                 <li>
                     <span className="sui-result__key">main content</span>

@@ -39,6 +39,7 @@ const config: SearchDriverOptions = {
         }
       },
       meta_description: {
+        raw: {},
         snippet: {
           fallback: true
         }
@@ -70,11 +71,16 @@ const config: SearchDriverOptions = {
       body_content: {},
       meta_keywords: {},
     },
-    disjunctiveFacets: ["meta_keywords"],
     facets: {
       category: { type: "value", size: 30 },
       sub_category: { type: "value", size: 30 },
       meta_keywords: { type: "value", size: 30 },
+    },
+    disjunctiveFacets: ["meta_keywords"],
+    conditionalFacets: {
+      'sub_category': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category')
+      }
     }
   }
 };
@@ -95,19 +101,20 @@ export default function App() {
                         header={<SearchBox debounceLength={0} searchAsYouType={true} />}
                         sideContent={
                           <div>
-                            {/*<Facet*/}
-                            {/*    field="category"*/}
-                            {/*    label="Category"*/}
-                            {/*    isFilterable={true}*/}
-                            {/*/>*/}
-                            {/*<Facet*/}
-                            {/*    field="sub_category"*/}
-                            {/*    label="Sub-Category"*/}
-                            {/*    isFilterable={true}*/}
-                            {/*/>*/}
+                            <Facet
+                                field="category"
+                                label="Category"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="sub_category"
+                                label="Sub-Category"
+                                isFilterable={true}
+                            />
                             <Facet
                                 field="meta_keywords"
                                 label="Keywords"
+                                filterType="any"
                                 isFilterable={true}
                             />
                           </div>
