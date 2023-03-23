@@ -69,7 +69,34 @@ const config: SearchDriverOptions = {
       },
       traits: {
         raw: {}
-      }
+      },
+      traditions: {
+        raw: {}
+      },
+      bloodlines: {
+        raw: {}
+      },
+      casting_components: {
+        raw: {}
+      },
+      range: {
+        raw: {}
+      },
+      save: {
+        raw: {}
+      },
+      deities: {
+        raw: {}
+      },
+      duration: {
+        raw: {}
+      },
+      spell_list: {
+        raw: {}
+      },
+      spell_level: {
+        raw: {}
+      },
     },
     search_fields: {
       title: {
@@ -84,12 +111,48 @@ const config: SearchDriverOptions = {
       sub_category: { type: "value", size: 30 },
       traits: { type: "value", size: 30 },
       meta_keywords: { type: "value", size: 30 },
+      traditions: { type: "value", size: 30 },
+      bloodlines: { type: "value", size: 30 },
+      casting_components: { type: "value", size: 30 },
+      range: { type: "value", size: 30 },
+      save: { type: "value", size: 30 },
+      deities: { type: "value", size: 30 },
+      duration : { type: "value", size: 30 },
+      spell_list: { type: "value", size: 30 },
+      spell_level: { type: "value", size: 30 },
     },
-    disjunctiveFacets: ["meta_keywords"],
+    disjunctiveFacets: ["meta_keywords", "traditions"],
     conditionalFacets: {
       'sub_category': ({ filters }) => {
         return filters.some(filter => filter.field === 'category')
-      }
+      },
+      'traditions': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
+      },
+      'bloodlines': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
+      },
+      'casting_components': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
+      },
+      'range': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
+      },
+      'save': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
+      },
+      'deities': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
+      },
+      'duration': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
+      },
+      'spell_list': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
+      },
+      'spell_level': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
+      },
     }
   }
 };
@@ -118,6 +181,46 @@ export default function App() {
                             <Facet
                                 field="sub_category"
                                 label="Sub-Category"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="traditions"
+                                label="Traditions"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="spell_level"
+                                label="Spell Level"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="bloodlines"
+                                label="Bloodlines"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="deities"
+                                label="Deity"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="spell_list"
+                                label="Spell List"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="casting_components"
+                                label="Casting Components"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="save"
+                                label="Saving Throw"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="duration"
+                                label="Duration"
                                 isFilterable={true}
                             />
                             <Facet
