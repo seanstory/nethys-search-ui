@@ -1,0 +1,303 @@
+{
+  "version": 1,
+  "description": "Ingest pipeline to process crawler data from https://2e.aonprd.com/",
+  "processors": [
+    {
+      "set": {
+        "field": "body_content",
+        "copy_from": "body_one",
+        "ignore_empty_value": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "body_content",
+        "copy_from": "body_two",
+        "ignore_empty_value": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "gsub": {
+        "field": "title",
+        "pattern": " - Archives of Nethys: Pathfinder 2nd Edition Database",
+        "replacement": "",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "grok": {
+        "field": "title",
+        "patterns": [
+          "%{WORD:title_prefix} - %{WORD:sub_category} - %{WORD:category}",
+          "%{WORD:title_prefix} - %{WORD:category}"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "split": {
+        "field": "meta_keywords",
+        "separator": ", ",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "source": "if(ctx['meta_keywords'] != null){\n  ArrayList commonKeywords = ['Archives', 'Nethys', 'Wiki', 'Archives of Nethys', 'Pathfinder', 'Official', 'AoN', 'AoNPRD', 'PRD', 'PFSRD', '2E', '2nd Edition'];\n  ArrayList meta_keywords = ctx['meta_keywords'];\n  meta_keywords.removeAll(commonKeywords);\n  ctx['meta_keywords'] = meta_keywords;\n}"
+      }
+    },
+    {
+      "grok": {
+        "field": "full_html",
+        "patterns": [
+          "%{GREEDYDATA}<img class=\"thumbnail\" src=\"%{DATA:thumbnail_suffix}\">%{GREEDYDATA}"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "source": "ctx['thumbnail_url'] = \"https://2e.aonprd.com/\" + ctx['thumbnail_suffix'];",
+        "if": "ctx['thumbnail_suffix'] != null",
+        "tag": "augment_thumbnail_url",
+        "ignore_failure": true,
+        "description": "Fix thumbnail links"
+      }
+    },
+    {
+      "gsub": {
+        "field": "thumbnail_url",
+        "pattern": "\\\\",
+        "replacement": "/",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "gsub": {
+        "field": "meta_description",
+        "pattern": "href=\"(?!http)",
+        "replacement": "href=\"https://2e.aonprd.com/",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "gsub": {
+        "field": "body_content",
+        "pattern": "href=\"(?!http)",
+        "replacement": "href=\"https://2e.aonprd.com/",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "source": "ctx['better_title'] = ctx['better_title'].replace(ctx['subtitle'], \"\");",
+        "if": "ctx['better_title']!=null && ctx['subtitle']!=null",
+        "tag": "remove_subtitle_from_title",
+        "ignore_failure": true,
+        "description": "Fix title"
+      }
+    },
+    {
+      "trim": {
+        "field": "better_title",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "orig_title",
+        "ignore_empty_value": true,
+        "ignore_failure": true,
+        "copy_from": "title"
+      }
+    },
+    {
+      "set": {
+        "field": "title",
+        "ignore_empty_value": true,
+        "if": "ctx['better_title']!=null && ctx['title']!=null && !(ctx['title'].endsWith(\"Feats\") || ctx['title'].endsWith(\"Traits\"))",
+        "ignore_failure": true,
+        "copy_from": "better_title"
+      }
+    },
+    {
+      "gsub": {
+        "field": "title",
+        "pattern": " - Classes",
+        "replacement": "",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "gsub": {
+        "field": "title",
+        "pattern": " - Ancestries",
+        "replacement": "",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "html_strip": {
+        "field": "full_html",
+        "target_field": "stripped_html",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "Traditions %{DATA:traditions}\\n",
+          "Bloodline %{DATA:bloodlines}\\n"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "Bloodline %{DATA:bloodlines}\\n"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "Cast %{DATA:casting_components}\\n"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "Range %{DATA:range}\\n"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "Saving Throw %{DATA:save}\\n"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "Deities %{DATA:deities}\\n"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "Duration %{DATA:duration}\\n"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "Spell List %{DATA:spell_list}\\n"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "split": {
+        "field": "traditions",
+        "separator": ", ",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "split": {
+        "field": "bloodlines",
+        "separator": ", ",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "split": {
+        "field": "deities",
+        "separator": ", ",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "trim": {
+        "field": "casting_components",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "grok": {
+        "field": "subtitle",
+        "patterns": [
+          "Spell %{GREEDYDATA:spell_level}"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "source": "// fix saves\nif (ctx['save']!=null){\n    String origSaveText = ctx['save'];\n    if (origSaveText.contains(\"Will\")){\n        ctx['save'] = \"Will\";\n    } else if (origSaveText.contains(\"Fortitude\")){\n        ctx['save'] = \"Fortitude\";\n    } else if (origSaveText.contains(\"Reflex\")){\n        ctx['save'] = \"Reflex\";\n    }\n}\n\n// fix components\nif (ctx['casting_components']!=null){\n    List components = [];\n    String componentText = ctx['casting_components'];\n    if (componentText.contains(\"verbal\")){\n        components.add(\"verbal\");\n    }\n    if (componentText.contains(\"somatic\")){\n        components.add(\"somatic\");\n    }\n    if (componentText.contains(\"material\")){\n        components.add(\"material\")\n    }\n    ctx[\"casting_components\"] = components;\n}\n\n// add spell level for cantrips\nif (ctx['traits']!=null && ctx['traits'].contains('Cantrip')){\n    ctx['spell_level'] = 0;\n}",
+        "ignore_failure": true,
+        "description": "Correct spell fields"
+      }
+    },
+    {
+      "remove": {
+        "field": [
+          "body_one",
+          "body_two",
+          "title_prefix",
+          "full_html",
+          "thumbnail_suffix",
+          "stripped_html"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    }
+  ]
+}
