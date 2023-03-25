@@ -55,7 +55,7 @@ export const CustomResultView = ({
                     </li>
                 }
                 {
-                    result.traits?.raw &&
+                    result.traits?.raw && Object.values(result.traits?.raw) &&
                     <li>
                         <span className="sui-result__key">traits</span>
                         <span className="sui-result__value">{Object.values(result.traits?.raw).join(", ")}</span>
