@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/nethys-search-ui/static/css/main.c0d9a361.css",
-    "main.js": "/nethys-search-ui/static/js/main.c6af7596.js",
+    "main.js": "/nethys-search-ui/static/js/main.d886b652.js",
     "static/js/787.67a8297f.chunk.js": "/nethys-search-ui/static/js/787.67a8297f.chunk.js",
     "index.html": "/nethys-search-ui/index.html",
     "main.c0d9a361.css.map": "/nethys-search-ui/static/css/main.c0d9a361.css.map",
-    "main.c6af7596.js.map": "/nethys-search-ui/static/js/main.c6af7596.js.map",
+    "main.d886b652.js.map": "/nethys-search-ui/static/js/main.d886b652.js.map",
     "787.67a8297f.chunk.js.map": "/nethys-search-ui/static/js/787.67a8297f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c0d9a361.css",
-    "static/js/main.c6af7596.js"
+    "static/js/main.d886b652.js"
   ]
 }
