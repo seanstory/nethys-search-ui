@@ -11,12 +11,14 @@ export const CustomResultView = ({
         <div className="sui-result__header">
             <h3>
                 {/* Maintain onClickLink to correct track click throughs for analytics*/}
-                <a onClick={onClickLink} href={result.url?.raw} dangerouslySetInnerHTML={{__html: result.title?.snippet}}/>
+                <a onClick={onClickLink} href={result.url?.raw} target='_blank' dangerouslySetInnerHTML={{__html: result.title?.snippet}}/>
             </h3>
             {
                 result.thumbnail_url?.raw &&
                 <span className="sui-result__image">
-                    <img src={result.thumbnail_url?.raw} alt="" style={{height: "100px"}} />
+                    <a href={result.thumbnail_url?.raw} target='_blank' >
+                        <img src={result.thumbnail_url?.raw} alt="" style={{height: "100px"}} />
+                    </a>
                 </span>
             }
         </div>
