@@ -42,7 +42,7 @@ const config: SearchDriverOptions = {
       casting_components: { type: "value", size: 30 },
       range: { type: "value", size: 30 },
       save: { type: "value", size: 30 },
-      deities: { type: "value", size: 30 },
+      deities: { type: "value", size: 250 },
       duration : { type: "value", size: 30 },
       spell_list: { type: "value", size: 30 },
       spell_level: { type: "value", size: 30 },
