@@ -44,7 +44,6 @@ const config: SearchDriverOptions = {
       save: { type: "value", size: 30 },
       deities: { type: "value", size: 250 },
       duration : { type: "value", size: 30 },
-      spell_list: { type: "value", size: 30 },
       spell_level: { type: "value", size: 30 },
     },
     disjunctiveFacets: ["meta_keywords", "traditions"],
@@ -71,9 +70,6 @@ const config: SearchDriverOptions = {
         return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
       },
       'duration': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'spell_list': ({ filters }) => {
         return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
       },
       'spell_level': ({ filters }) => {
@@ -127,11 +123,6 @@ export default function App() {
                             <Facet
                                 field="deities"
                                 label="Deity"
-                                isFilterable={true}
-                            />
-                            <Facet
-                                field="spell_list"
-                                label="Spell List"
                                 isFilterable={true}
                             />
                             <Facet
