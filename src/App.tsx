@@ -22,9 +22,9 @@ import { SearchDriverOptions } from "@elastic/search-ui";
 import {CustomResultView} from "./components/CustomResultView";
 
 const connector = new AppSearchAPIConnector({
-  searchKey: "search-he399pdnh3tms9u3nhwecppr",
+  searchKey: "search-9hw5iyis8d4yhz6aq5zx5otz",
   engineName: "nethys",
-  endpointBase: "https://bc3-crawler-qa.ent.us-west2.gcp.elastic-cloud.com"
+  endpointBase: "https://aon-replacement.ent.europe-west1.gcp.cloud.es.io"
 });
 
 const config: SearchDriverOptions = {
