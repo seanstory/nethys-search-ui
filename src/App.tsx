@@ -24,7 +24,7 @@ import {CustomResultView} from "./components/CustomResultView";
 const connector = new AppSearchAPIConnector({
   searchKey: "search-he399pdnh3tms9u3nhwecppr",
   engineName: "nethys",
-  endpointBase: "https://bc3-crawler-qa.ent.us-west2.gcp.elastic-cloud.com"
+  endpointBase: "https://eff02e5b84a6427295fafb8589d99cf7.ent-search.us-west2.gcp.elastic-cloud.com"
 });
 
 const config: SearchDriverOptions = {
