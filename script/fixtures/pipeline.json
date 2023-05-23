@@ -160,21 +160,23 @@
       "grok": {
         "field": "stripped_html",
         "patterns": [
-          "Traditions %{DATA:traditions}\\n",
-          "Bloodline %{DATA:bloodlines}\\n"
+          "Traditions %{DATA:traditions}\\n"
         ],
         "ignore_missing": true,
-        "ignore_failure": true
+        "ignore_failure": true,
+        "description": "Extracts 'traditions' from stripped_html"
       }
     },
     {
       "grok": {
         "field": "stripped_html",
         "patterns": [
-          "Bloodline %{DATA:bloodlines}\\n"
+          "Bloodline %{DATA:bloodlines}\\n",
+          "Bloodlines %{DATA:bloodlines}\\n"
         ],
         "ignore_missing": true,
-        "ignore_failure": true
+        "ignore_failure": true,
+        "description": "Extracts 'bloodlines' from stripped_html"
       }
     },
     {
@@ -184,7 +186,8 @@
           "Cast %{DATA:casting_components}\\n"
         ],
         "ignore_missing": true,
-        "ignore_failure": true
+        "ignore_failure": true,
+        "description": "Extracts 'casting components' from stripped_html"
       }
     },
     {
@@ -194,7 +197,8 @@
           "Range %{DATA:range}\\n"
         ],
         "ignore_missing": true,
-        "ignore_failure": true
+        "ignore_failure": true,
+        "description": "Extracts 'range' from stripped_html"
       }
     },
     {
@@ -204,7 +208,8 @@
           "Saving Throw %{DATA:save}\\n"
         ],
         "ignore_missing": true,
-        "ignore_failure": true
+        "ignore_failure": true,
+        "description": "Extracts 'save' from stripped_html"
       }
     },
     {
@@ -214,7 +219,8 @@
           "Deities %{DATA:deities}\\n"
         ],
         "ignore_missing": true,
-        "ignore_failure": true
+        "ignore_failure": true,
+        "description": "Extracts 'deities' from stripped_html"
       }
     },
     {
@@ -224,7 +230,8 @@
           "Duration %{DATA:duration}\\n"
         ],
         "ignore_missing": true,
-        "ignore_failure": true
+        "ignore_failure": true,
+        "description": "Extracts 'duration' from stripped_html"
       }
     },
     {
@@ -234,7 +241,19 @@
           "Spell List %{DATA:spell_list}\\n"
         ],
         "ignore_missing": true,
-        "ignore_failure": true
+        "ignore_failure": true,
+        "description": "Extracts 'spell_list' from stripped_html"
+      }
+    },
+    {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "\\nHands %{NUMBER:hands}\\n"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Extracts 'hands' from stripped_html"
       }
     },
     {
@@ -243,6 +262,15 @@
         "separator": ", ",
         "ignore_missing": true,
         "ignore_failure": true
+      }
+    },
+    {
+      "split": {
+        "field": "spell_list",
+        "separator": ", ",
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Splits the string stored in \"spell_list\" to an array"
       }
     },
     {
@@ -272,15 +300,40 @@
       "grok": {
         "field": "subtitle",
         "patterns": [
-          "Spell %{GREEDYDATA:spell_level}"
+          "Spell %{GREEDYDATA:spell_level}",
+          "Cantrip %{GREEDYDATA:spell_level}",
+          "Focus %{GREEDYDATA:spell_level}",
+          "Ritual %{GREEDYDATA:spell_level}"
         ],
         "ignore_missing": true,
-        "ignore_failure": true
+        "ignore_failure": true,
+        "description": "Extracts 'spell level' from subtitle"
+      }
+    },
+    {
+      "grok": {
+        "field": "full_html",
+        "patterns": [
+          "<span style=\\\"margin-left:auto; margin-right:0\\\">%{SPELL:is_spell} %{NUMBER:spell_level}</span>",
+          "<span style=\\\"margin-left:auto; margin-right:0\\\">%{CANTRIP:is_cantrip} %{NUMBER:spell_level}</span>",
+          "<span style=\\\"margin-left:auto; margin-right:0\\\">%{FOCUS:is_focus} %{NUMBER:spell_level}</span>",
+          "<span style=\\\"margin-left:auto; margin-right:0\\\">%{RITUAL:is_ritual} %{NUMBER:spell_level}</span>"
+        ],
+        "pattern_definitions": {
+          "CANTRIP": "Cantrip",
+          "FOCUS": "Focus",
+          "SPELL": "Spell",
+          "RITUAL": "Ritual"
+        },
+        "ignore_missing": true,
+        "if": "ctx['spell_level']==null",
+        "ignore_failure": true,
+        "description": "Extracts spell level from full_html"
       }
     },
     {
       "script": {
-        "source": "// fix saves\nif (ctx['save']!=null){\n    String origSaveText = ctx['save'];\n    if (origSaveText.contains(\"Will\")){\n        ctx['save'] = \"Will\";\n    } else if (origSaveText.contains(\"Fortitude\")){\n        ctx['save'] = \"Fortitude\";\n    } else if (origSaveText.contains(\"Reflex\")){\n        ctx['save'] = \"Reflex\";\n    }\n}\n\n// fix components\nif (ctx['casting_components']!=null){\n    List components = [];\n    String componentText = ctx['casting_components'];\n    if (componentText.contains(\"verbal\")){\n        components.add(\"verbal\");\n    }\n    if (componentText.contains(\"somatic\")){\n        components.add(\"somatic\");\n    }\n    if (componentText.contains(\"material\")){\n        components.add(\"material\")\n    }\n    ctx[\"casting_components\"] = components;\n}\n\n// add spell level for cantrips\nif (ctx['traits']!=null && ctx['traits'].contains('Cantrip')){\n    ctx['spell_level'] = 0;\n}",
+        "source": "// fix saves\nif (ctx['save']!=null){\n    String origSaveText = ctx['save'];\n    if (origSaveText.contains(\"Will\")){\n        ctx['save'] = \"Will\";\n    } else if (origSaveText.contains(\"Fortitude\")){\n        ctx['save'] = \"Fortitude\";\n    } else if (origSaveText.contains(\"Reflex\")){\n        ctx['save'] = \"Reflex\";\n    }\n}\n\n// fix components\nif (ctx['casting_components']!=null){\n    List components = [];\n    String componentText = ctx['casting_components'];\n    if (componentText.contains(\"verbal\")){\n        components.add(\"verbal\");\n    }\n    if (componentText.contains(\"somatic\")){\n        components.add(\"somatic\");\n    }\n    if (componentText.contains(\"material\")){\n        components.add(\"material\")\n    }\n    ctx[\"casting_components\"] = components;\n}\n\n// correct missing spell subtitles\nif (ctx['spell_level'] != null && (ctx['subtitle'] == null || ctx['subtitle'] == \"\")){\n    if(ctx['is_spell'] != null){\n        ctx['subtitle'] = \"Spell \"+ctx['spell_level'];\n        ctx['spell_type'] = \"spell\";\n    } else if (ctx['is_cantrip'] != null){\n        ctx['subtitle'] = \"Cantrip \"+ctx['spell_level'];\n        ctx['spell_type'] = \"cantrip\";\n    } else if (ctx['is_focus'] != null){\n        ctx['subtitle'] = \"Focus \"+ctx['spell_level'];\n        ctx['spell_type'] = 'focus spell';\n    } else if (ctx['is_ritual'] != null){\n        ctx['subtitle'] = \"Ritual \"+ctx['spell_level'];\n        ctx['spell_type'] = 'ritual';\n    }\n}\n\n// join spell_list into traditions\nif (ctx['traditions'] != null && ctx['spell_list'] != null){\n    for(String s: ctx['spell_list']){\n        ctx['traditions'].add(s)\n    }\n}",
         "ignore_failure": true,
         "description": "Correct spell fields"
       }
@@ -291,9 +344,13 @@
           "body_one",
           "body_two",
           "title_prefix",
-          "full_html",
           "thumbnail_suffix",
-          "stripped_html"
+          "spell_list",
+          "stripped_html",
+          "full_html",
+          "is_spell",
+          "is_cantrip",
+          "is_focus"
         ],
         "ignore_missing": true,
         "ignore_failure": true
