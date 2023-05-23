@@ -1,0 +1,98 @@
+{
+  "_index": ".ent-search-actastic-engines_v26",
+  "_id": "6419f104b35f0f8dc26e2015",
+  "_score": 1,
+  "_source": {
+    "id": "6419f104b35f0f8dc26e2015",
+    "created_at": "2023-03-21T18:01:40Z",
+    "updated_at": "2023-03-25T17:33:45Z",
+    "type_": "Engine::IndexedEngine",
+    "loco_moco_account_id": "63fcd192b35f0f382d6c2a9e",
+    "slug": "nethys",
+    "name": "nethys",
+    "sample": false,
+    "queued_for_deletion": null,
+    "has_document_positions": true,
+    "has_synonyms": false,
+    "curation_suggestions_config": null,
+    "search_setting": [
+      {
+        "result_fields": {
+          "meta_description": {
+            "raw": {}
+          },
+          "traits": {
+            "raw": {}
+          },
+          "sub_category": {
+            "raw": {}
+          },
+          "body_content": {
+            "snippet": {
+              "size": 300,
+              "fallback": true
+            }
+          },
+          "subtitle": {
+            "raw": {}
+          },
+          "category": {
+            "raw": {}
+          },
+          "meta_keywords": {
+            "raw": {}
+          },
+          "thumbnail_url": {
+            "raw": {}
+          },
+          "title": {
+            "snippet": {
+              "size": 100,
+              "fallback": true
+            },
+            "raw": {}
+          },
+          "url": {
+            "raw": {}
+          }
+        },
+        "search_fields": {
+          "meta_description": {
+            "weight": 1
+          },
+          "traits": {
+            "weight": 1
+          },
+          "orig_title": {
+            "weight": 5
+          },
+          "sub_category": {
+            "weight": 2
+          },
+          "body_content": {
+            "weight": 0.5
+          },
+          "id": {
+            "weight": 1
+          },
+          "category": {
+            "weight": 1
+          },
+          "title": {
+            "weight": 5
+          },
+          "meta_keywords": {
+            "weight": 3
+          }
+        },
+        "precision": 4,
+        "boosts": {}
+      }
+    ],
+    "search_index_ids": [
+      "6419f104b35f0f8dc26e2014"
+    ],
+    "crawl_schedule": null,
+    "source_engine_ids": []
+  }
+}

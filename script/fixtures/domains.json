@@ -1,0 +1,125 @@
+[
+  {
+    "_index": ".ent-search-actastic-crawler2_domains",
+    "_id": "6419c4ebb35f0f52d96c2b33",
+    "_score": 1,
+    "_source": {
+      "id": "6419c4ebb35f0f52d96c2b33",
+      "created_at": "2023-03-21T14:53:31Z",
+      "updated_at": "2023-05-23T15:56:50Z",
+      "configuration_oid": "6419c4c0b35f0ffe906c2b2b",
+      "name": "https://2e.aonprd.com",
+      "crawl_rules": [],
+      "seed_urls": [
+        {
+          "created_at": "2023-03-21T14:53:31Z",
+          "id": "6419c4ebb35f0f52d96c2b32",
+          "url": "https://2e.aonprd.com/"
+        },
+        {
+          "created_at": "2023-03-21T14:54:07Z",
+          "id": "6419c50fb35f0ffe906c2b35",
+          "url": "https://2e.aonprd.com/Actions.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:54:19Z",
+          "id": "6419c51bb35f0f8f5b6c2b37",
+          "url": "https://2e.aonprd.com/Afflictions.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:54:30Z",
+          "id": "6419c526b35f0fc2856c2b39",
+          "url": "https://2e.aonprd.com/Ancestries.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:54:43Z",
+          "id": "6419c533b35f0f089a6c2b3b",
+          "url": "https://2e.aonprd.com/Archetypes.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:54:55Z",
+          "id": "6419c53fb35f0f06e36c2b3d",
+          "url": "https://2e.aonprd.com/Backgrounds.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:55:06Z",
+          "id": "6419c54ab35f0feecd6c2b3f",
+          "url": "https://2e.aonprd.com/Classes.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:55:17Z",
+          "id": "6419c555b35f0f06e36c2b41",
+          "url": "https://2e.aonprd.com/Conditions.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:55:30Z",
+          "id": "6419c562b35f0f089a6c2b43",
+          "url": "https://2e.aonprd.com/Creatures.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:55:42Z",
+          "id": "6419c56eb35f0f907c6c2b45",
+          "url": "https://2e.aonprd.com/Equipment.aspx?All=true"
+        },
+        {
+          "created_at": "2023-03-21T14:55:53Z",
+          "id": "6419c579b35f0f52d96c2b47",
+          "url": "https://2e.aonprd.com/Feats.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:56:05Z",
+          "id": "6419c585b35f0f93cf6c2b49",
+          "url": "https://2e.aonprd.com/Hazards.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:56:17Z",
+          "id": "6419c591b35f0f907c6c2b4b",
+          "url": "https://2e.aonprd.com/Rules.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:56:28Z",
+          "id": "6419c59cb35f0f28606c2b4d",
+          "url": "https://2e.aonprd.com/Skills.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:56:41Z",
+          "id": "6419c5a9b35f0f907c6c2b4f",
+          "url": "https://2e.aonprd.com/SpellLists.aspx?Tradition=0"
+        },
+        {
+          "created_at": "2023-03-21T14:56:53Z",
+          "id": "6419c5b5b35f0fc2856c2b51",
+          "url": "https://2e.aonprd.com/Traits.aspx"
+        },
+        {
+          "created_at": "2023-03-21T14:57:05Z",
+          "id": "6419c5c1b35f0f7dc46c2b53",
+          "url": "https://2e.aonprd.com/Rules.aspx?ID=1483"
+        },
+        {
+          "created_at": "2023-03-21T14:57:17Z",
+          "id": "6419c5cdb35f0f28606c2b55",
+          "url": "https://2e.aonprd.com/Rules.aspx?ID=748"
+        },
+        {
+          "created_at": "2023-03-21T14:57:29Z",
+          "id": "6419c5d9b35f0f90606c2b57",
+          "url": "https://2e.aonprd.com/Rules.aspx?ID=1587"
+        },
+        {
+          "created_at": "2023-03-21T14:57:39Z",
+          "id": "6419c5e3b35f0f9ede6c2b59",
+          "url": "https://2e.aonprd.com/Rules.aspx?ID=686"
+        }
+      ],
+      "sitemaps": [],
+      "deduplication_enabled": true,
+      "deduplication_fields": [
+        "meta_description",
+        "meta_keywords",
+        "title"
+      ],
+      "last_visited_at": "2023-05-23T15:56:50Z"
+    }
+  }
+]
