@@ -280,7 +280,7 @@
     },
     {
       "script": {
-        "source": "// fix saves\nif (ctx['save']!=null){\n    String origSaveText = ctx['save'];\n    if (origSaveText.contains(\"Will\")){\n        ctx['save'] = \"Will\";\n    } else if (origSaveText.contains(\"Fortitude\")){\n        ctx['save'] = \"Fortitude\";\n    } else if (origSaveText.contains(\"Reflex\")){\n        ctx['save'] = \"Reflex\";\n    }\n}\n\n// fix components\nif (ctx['casting_components']!=null){\n    List components = [];\n    String componentText = ctx['casting_components'];\n    if (componentText.contains(\"verbal\")){\n        components.add(\"verbal\");\n    }\n    if (componentText.contains(\"somatic\")){\n        components.add(\"somatic\");\n    }\n    if (componentText.contains(\"material\")){\n        components.add(\"material\")\n    }\n    ctx[\"casting_components\"] = components;\n}\n\n// add spell level for cantrips\nif (ctx['traits']!=null && ctx['traits'].contains('Cantrip')){\n    ctx['spell_level'] = 0;\n}",
+        "source": "// fix saves\nif (ctx['save']!=null){\n    String origSaveText = ctx['save'];\n    if (origSaveText.contains(\"Will\")){\n        ctx['save'] = \"Will\";\n    } else if (origSaveText.contains(\"Fortitude\")){\n        ctx['save'] = \"Fortitude\";\n    } else if (origSaveText.contains(\"Reflex\")){\n        ctx['save'] = \"Reflex\";\n    }\n}\n\n// fix components\nif (ctx['casting_components']!=null){\n    List components = [];\n    String componentText = ctx['casting_components'];\n    if (componentText.contains(\"verbal\")){\n        components.add(\"verbal\");\n    }\n    if (componentText.contains(\"somatic\")){\n        components.add(\"somatic\");\n    }\n    if (componentText.contains(\"material\")){\n        components.add(\"material\")\n    }\n    ctx[\"casting_components\"] = components;\n}\n\n// add spell level for cantrips\nif (ctx['traits']!=null && ctx['traits'].contains('Cantrip')){\n    ctx['spell_level'] = 0;\n}\n\n// add spell list to traditions\nif (ctx['spell_list']!=null && ctx['traditions']!=null){\n    ctx['traditions'].add(ctx['spell_list']);\n}\n\n// add spell type\nif (ctx['subtitle']!=null) {\n    if (ctx['subtitle'].startsWith(\"Spell\")){\n        ctx['spell_type'] = 'spell';\n    } else if (ctx['subtitle'].startsWith(\"Ritual\")){\n        ctx['spell_type'] = 'ritual';\n    } else if (ctx['subtitle'].startsWith(\"Focus\")){\n        ctx['spell_type'] = 'focus';\n    } else if (ctx['subtitle'].startsWith(\"Cantrip\")){\n        ctx['spell_type'] = 'cantrip';\n    }\n}",
         "ignore_failure": true,
         "description": "Correct spell fields"
       }
@@ -293,7 +293,9 @@
           "title_prefix",
           "full_html",
           "thumbnail_suffix",
-          "stripped_html"
+          "stripped_html",
+          "spell_list",
+          "orig_title"
         ],
         "ignore_missing": true,
         "ignore_failure": true

@@ -40,4 +40,6 @@ You will also see any lint errors in the console.
 
 ### `npm run deploy`
 
+**STOP** - Did you update the fixtures and settings descriptions?!
+
 Deploys the UI using `gh-pages` to Github Pages.
