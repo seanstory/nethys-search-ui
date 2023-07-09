@@ -20,6 +20,24 @@
     },
     {
       "gsub": {
+        "field": "body_content",
+        "pattern": ".*\\|.* Source ",
+        "replacement": "",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "gsub": {
+        "field": "body_content",
+        "pattern": " Site Owner:.*$",
+        "replacement": "",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "gsub": {
         "field": "title",
         "pattern": " - Archives of Nethys: Pathfinder 2nd Edition Database",
         "replacement": "",
