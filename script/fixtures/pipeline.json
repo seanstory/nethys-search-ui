@@ -365,6 +365,15 @@
     },
     {
       "remove": {
+        "field": "traits",
+        "if": "ctx['url'] != null && ctx['url'].contains('Classes.aspx')",
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Classes don't have traits; the crawler picks up traits from embedded actions on class pages"
+      }
+    },
+    {
+      "remove": {
         "field": [
           "body_one",
           "body_two",
