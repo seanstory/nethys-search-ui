@@ -305,6 +305,42 @@
       }
     },
     {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "Usage %{DATA:usage};"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Extracts 'usage' (equipment slot) from stripped_html"
+      }
+    },
+    {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "Bulk %{DATA:bulk}[;\\n]"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Extracts 'bulk' from stripped_html"
+      }
+    },
+    {
+      "grok": {
+        "field": "stripped_html",
+        "patterns": [
+          "Hardness %{NUMBER:hardness}; HP \\(BT\\) %{NUMBER:durability} \\(%{NUMBER:break_threshold}\\)",
+          "Hardness %{NUMBER:hardness}, HP %{NUMBER:durability},? and BT %{NUMBER:break_threshold}",
+          "Hardness %{NUMBER:hardness}, HP %{NUMBER:durability}, BT %{NUMBER:break_threshold}",
+          "Hardness %{NUMBER:hardness}, HP %{NUMBER:durability} \\(BT %{NUMBER:break_threshold}\\)"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Extracts 'hardness', 'durability' (HP), and 'break_threshold' (BT) from stripped_html"
+      }
+    },
+    {
       "split": {
         "field": "traditions",
         "separator": ", ",

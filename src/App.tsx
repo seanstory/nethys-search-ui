@@ -48,6 +48,11 @@ const config: SearchDriverOptions = {
       spell_type: { type: "value", size: 30 },
       num_actions: { type: "value", size: 10 },
       requirements_flag: { type: "value", size: 2 },
+      usage: { type: "value", size: 30 },
+      bulk: { type: "value", size: 30 },
+      hardness: { type: "value", size: 30 },
+      durability: { type: "value", size: 30 },
+      break_threshold: { type: "value", size: 30 },
     },
     disjunctiveFacets: ["meta_keywords", "traditions"],
     conditionalFacets: {
@@ -86,6 +91,21 @@ const config: SearchDriverOptions = {
       },
       'requirements_flag': ({ filters }) => {
         return filters.some(filter => filter.field === 'category' && filter.values.includes('Actions'))
+      },
+      'usage': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
+      },
+      'bulk': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
+      },
+      'hardness': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
+      },
+      'durability': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
+      },
+      'break_threshold': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
       },
     }
   }
@@ -165,6 +185,31 @@ export default function App() {
                             <Facet
                                 field="requirements_flag"
                                 label="Has Requirements"
+                                isFilterable={false}
+                            />
+                            <Facet
+                                field="usage"
+                                label="Usage"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="bulk"
+                                label="Bulk"
+                                isFilterable={false}
+                            />
+                            <Facet
+                                field="hardness"
+                                label="Hardness"
+                                isFilterable={false}
+                            />
+                            <Facet
+                                field="durability"
+                                label="Durability (HP)"
+                                isFilterable={false}
+                            />
+                            <Facet
+                                field="break_threshold"
+                                label="Break Threshold"
                                 isFilterable={false}
                             />
                             <Facet
