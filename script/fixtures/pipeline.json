@@ -123,6 +123,18 @@
       }
     },
     {
+      "grok": {
+        "field": "full_html",
+        "patterns": [
+          "<h1 class=\"title\"><a href=\"[A-Za-z]+\\.aspx\\?ID=%{NUMBER}[^\"]*\">%{DATA:better_title}</a>"
+        ],
+        "if": "ctx['better_title'] == null || ctx['better_title'] == ''",
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Extracts better_title from h1.title in full_html when CSS extraction rule missed it"
+      }
+    },
+    {
       "script": {
         "source": "ctx['better_title'] = ctx['better_title'].replace(ctx['subtitle'], \"\");",
         "if": "ctx['better_title']!=null && ctx['subtitle']!=null",
@@ -171,6 +183,17 @@
         "replacement": "",
         "ignore_missing": true,
         "ignore_failure": true
+      }
+    },
+    {
+      "gsub": {
+        "field": "title",
+        "pattern": " - [A-Za-z]+$",
+        "replacement": "",
+        "if": "ctx['better_title'] == null || ctx['better_title'] == ''",
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Strip trailing ' - Category' from title when better_title not available"
       }
     },
     {
@@ -361,6 +384,33 @@
         "source": "// fix saves\nif (ctx['save']!=null){\n    String origSaveText = ctx['save'];\n    if (origSaveText.contains(\"Will\")){\n        ctx['save'] = \"Will\";\n    } else if (origSaveText.contains(\"Fortitude\")){\n        ctx['save'] = \"Fortitude\";\n    } else if (origSaveText.contains(\"Reflex\")){\n        ctx['save'] = \"Reflex\";\n    }\n}\n\n// fix components\nif (ctx['casting_components']!=null){\n    List components = [];\n    String componentText = ctx['casting_components'];\n    if (componentText.contains(\"verbal\")){\n        components.add(\"verbal\");\n    }\n    if (componentText.contains(\"somatic\")){\n        components.add(\"somatic\");\n    }\n    if (componentText.contains(\"material\")){\n        components.add(\"material\")\n    }\n    ctx[\"casting_components\"] = components;\n}\n\n// correct missing spell subtitles\nif (ctx['spell_level'] != null && (ctx['subtitle'] == null || ctx['subtitle'] == \"\")){\n    if(ctx['is_spell'] != null){\n        ctx['subtitle'] = \"Spell \"+ctx['spell_level'];\n        ctx['spell_type'] = \"spell\";\n    } else if (ctx['is_cantrip'] != null){\n        ctx['subtitle'] = \"Cantrip \"+ctx['spell_level'];\n        ctx['spell_type'] = \"cantrip\";\n    } else if (ctx['is_focus'] != null){\n        ctx['subtitle'] = \"Focus \"+ctx['spell_level'];\n        ctx['spell_type'] = 'focus spell';\n    } else if (ctx['is_ritual'] != null){\n        ctx['subtitle'] = \"Ritual \"+ctx['spell_level'];\n        ctx['spell_type'] = 'ritual';\n    }\n}\n\n// join spell_list into traditions\nif (ctx['traditions'] != null && ctx['spell_list'] != null){\n    for(String s: ctx['spell_list']){\n        ctx['traditions'].add(s)\n    }\n}",
         "ignore_failure": true,
         "description": "Correct spell fields"
+      }
+    },
+    {
+      "script": {
+        "source": "if (ctx['headings'] != null) { for (String h : ctx['headings']) { def m = /\\[(one-action|two-actions|three-actions|free-action|reaction)\\]/.matcher(h); if (m.find()) { ctx['num_actions'] = m.group(1); break; } } }",
+        "if": "ctx['num_actions'] == null",
+        "ignore_failure": true,
+        "description": "Extracts action cost from headings array"
+      }
+    },
+    {
+      "grok": {
+        "field": "subtitle",
+        "patterns": [
+          "\\[%{DATA:num_actions}\\]"
+        ],
+        "if": "ctx['num_actions'] == null",
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Extracts action cost from subtitle if not already found in headings"
+      }
+    },
+    {
+      "script": {
+        "source": "if (ctx['body_content'] != null && ctx['body_content'].contains('Requirements')) { ctx['requirements_flag'] = 'yes'; }",
+        "ignore_failure": true,
+        "description": "Sets requirements_flag when body_content mentions Requirements"
       }
     },
     {

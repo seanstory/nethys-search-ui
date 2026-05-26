@@ -19,7 +19,7 @@
           },
           "field_name": "body_one",
           "multiple_objects_handling": "string",
-          "selector": "#ctl00_MainContent_DetailedOutput",
+          "selector": "#main",
           "source_type": "html"
         },
         {
@@ -56,7 +56,7 @@
           },
           "field_name": "better_title",
           "multiple_objects_handling": "string",
-          "selector": "#ctl00_RadDrawer1_Content_MainContent_DetailedOutput > h1:nth-child(1)",
+          "selector": "h1.title",
           "source_type": "html"
         }
       ],
@@ -83,7 +83,7 @@
           },
           "field_name": "subtitle",
           "multiple_objects_handling": "string",
-          "selector": "#ctl00_RadDrawer1_Content_MainContent_DetailedOutput > h1 > span",
+          "selector": "h1.title > span",
           "source_type": "html"
         }
       ],

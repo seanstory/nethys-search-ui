@@ -46,6 +46,8 @@ const config: SearchDriverOptions = {
       duration : { type: "value", size: 30 },
       spell_level: { type: "value", size: 30 },
       spell_type: { type: "value", size: 30 },
+      num_actions: { type: "value", size: 10 },
+      requirements_flag: { type: "value", size: 2 },
     },
     disjunctiveFacets: ["meta_keywords", "traditions"],
     conditionalFacets: {
@@ -78,6 +80,12 @@ const config: SearchDriverOptions = {
       },
       'spell_type': ({ filters }) => {
         return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
+      },
+      'num_actions': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Actions'))
+      },
+      'requirements_flag': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Actions'))
       },
     }
   }
@@ -148,6 +156,16 @@ export default function App() {
                                 field="duration"
                                 label="Duration"
                                 isFilterable={true}
+                            />
+                            <Facet
+                                field="num_actions"
+                                label="Number of Actions"
+                                isFilterable={false}
+                            />
+                            <Facet
+                                field="requirements_flag"
+                                label="Has Requirements"
+                                isFilterable={false}
                             />
                             <Facet
                                 field="traits"
