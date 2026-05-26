@@ -38,7 +38,7 @@ If the issue involves content extraction or HTML structure, fetch the live Nethy
 | Fixture | What it controls | Deploy script |
 |---|---|---|
 | `script/fixtures/pipeline.json` | Ingest pipeline processors (field extraction, transforms, cleanup) | `script/update-pipeline.sh` |
-| `script/fixtures/extraction_rules.json` | Crawler CSS extraction rules (traits, body, title, subtitle) | Manual via ES `_update` (see CLAUDE.md) |
+| `script/fixtures/extraction_rules.json` | Crawler CSS extraction rules (traits, body, title, subtitle) | `script/update-extraction-rules.sh` |
 | `script/fixtures/domains.json` | Crawl rules, seed URLs, deduplication settings | `script/update-crawl-rules.sh` |
 | `script/fixtures/engine.json` | App Search engine settings (relevance tuning, synonyms) | `script/update-engine.sh` |
 | `script/fixtures/curations.json` | Pinned/hidden search results (stored as URLs, resolved to doc IDs at deploy time) | `script/update-curations.sh` |
@@ -74,10 +74,11 @@ If the response contains `"Facets field cannot facet on <field>"`, the field typ
 Run the appropriate deploy script(s). All scripts source `.env` automatically:
 
 ```bash
-script/update-pipeline.sh       # Push pipeline changes
-script/update-crawl-rules.sh    # Push crawl rule changes
-script/update-engine.sh         # Push engine setting changes
-script/update-curations.sh      # Push curation changes
+script/update-pipeline.sh          # Push pipeline changes
+script/update-crawl-rules.sh       # Push crawl rule changes
+script/update-engine.sh            # Push engine setting changes
+script/update-extraction-rules.sh  # Push CSS extraction rule changes
+script/update-curations.sh         # Push curation changes (run after crawl)
 ```
 
 ## 5. Test with a targeted crawl

@@ -1,4 +1,4 @@
-.PHONY: help deploy-config restore update-pipeline update-crawl-rules update-engine update-curations trigger-crawl trigger-process-crawl check-dead-links delete-dead-links
+.PHONY: help deploy-config restore update-pipeline update-crawl-rules update-engine update-curations update-extraction-rules trigger-crawl trigger-process-crawl check-dead-links delete-dead-links
 
 SHELL := /bin/bash
 
@@ -13,7 +13,7 @@ restore: deploy-config trigger-crawl ## Full restore: push all config then start
 	@echo "Crawl is running. Once it completes (~30 min), run:"
 	@echo "  make update-curations"
 
-deploy-config: update-pipeline update-crawl-rules update-engine ## Push pipeline, crawl rules, and engine settings (safe to run anytime).
+deploy-config: update-pipeline update-crawl-rules update-engine update-extraction-rules ## Push pipeline, crawl rules, engine settings, and extraction rules (safe to run anytime).
 
 # ── Individual config scripts ────────────────────────────────────────────────
 
@@ -25,6 +25,9 @@ update-crawl-rules: ## Sync fixtures/domains.json crawl rules → live crawler d
 
 update-engine: ## Push fixtures/engine.json search settings → App Search
 	bash script/update-engine.sh
+
+update-extraction-rules: ## Push fixtures/extraction_rules.json → crawler extraction rules (direct ES write)
+	bash script/update-extraction-rules.sh
 
 update-curations: ## Sync fixtures/curations.json pinned results → App Search (run after crawl completes)
 	bash script/update-curations.sh
