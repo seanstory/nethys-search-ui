@@ -32,6 +32,7 @@ Backend component configurations (pipeline, crawl rules, engine settings) are st
 | `script/update-pipeline.sh` | Push ingest pipeline changes to Elasticsearch |
 | `script/update-crawl-rules.sh` | Sync crawl rules from fixture to the live crawler domain |
 | `script/update-engine.sh` | Push engine search settings to App Search |
+| `script/update-curations.sh` | Sync pinned/hidden search results from fixture to App Search (resolves URLs to current doc IDs) |
 | `script/trigger-crawl.sh` | Trigger a full crawl immediately |
 | `script/trigger-process-crawl.sh` | Re-apply crawl rules to all indexed docs (purges newly-denied URLs without a full recrawl) |
 | `script/check-dead-links.sh` | Report counts of session-token URLs, soft-404 docs, and crawler URL metadata size |
