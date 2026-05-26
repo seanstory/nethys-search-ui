@@ -51,6 +51,10 @@ Edit the appropriate fixture file(s). Common patterns:
 - **Crawl rule fix**: Edit `domains.json` to add deny/allow rules.
 - **Frontend fix**: Edit `src/App.tsx` (config, facets) or `src/components/CustomResultView.tsx` (result display).
 
+### Gotcha: Crawler normalizes HTML
+
+The crawler normalizes `full_html` before it reaches the ingest pipeline: attribute order is alphabetized and single quotes become double quotes. For example, raw HTML `<span class='action' title='Two Actions'>` becomes `<span aria-label="Two Actions" class="action" role="img" title="Two Actions">` in `full_html`. **Do not copy regex patterns from `curl` output** — always check the actual `full_html` field in ES (temporarily remove `full_html` from the pipeline's cleanup `remove` processor, crawl a page, then inspect).
+
 ### Gotcha: App Search facets on new fields
 
 **Test the App Search facet API before doing a full batch crawl.** The engine is ES-backed and has a constraint: it cannot facet on `boolean` fields, only `text`/`keyword`. If you store a flag as `boolean` (Python `True` or Painless `true`), it gets that mapping and you're stuck — ES won't let you re-map the field type. Use string values like `"yes"` so the field maps as `keyword`.
@@ -147,7 +151,36 @@ Also crawl and check a page of a **different** category to confirm the fix didn'
 
 ## 7. Clean up remaining affected documents
 
-If the fix was verified on a sample, crawl all remaining affected pages in a single batch (the crawler accepts multiple seed URLs). Then run the same ES query from step 6a to confirm zero documents remain in the broken state.
+If the fix was verified on a sample, crawl all remaining affected pages in a single batch. The crawler accepts large seed URL lists (1000+). To collect URLs for an entire category, paginate through the App Search search API:
+
+```bash
+source script/common.sh
+python3 -c "
+import json, urllib.request
+urls = []
+for page in range(1, 999):
+    body = json.dumps({
+        'query': '', 'filters': {'category': '<Category>'},
+        'result_fields': {'url': {'raw': {}}},
+        'page': {'size': 100, 'current': page}
+    }).encode()
+    req = urllib.request.Request(
+        '${ENT_SEARCH_ENDPOINT}/api/as/v1/engines/nethys/search',
+        data=body, method='POST',
+        headers={'Authorization': 'Bearer ${ENT_SEARCH_PRIVATE_KEY}', 'Content-Type': 'application/json'}
+    )
+    resp = json.load(urllib.request.urlopen(req))
+    for doc in resp['results']:
+        urls.append(doc['url']['raw'])
+    if page >= resp['meta']['page']['total_pages']:
+        break
+print(json.dumps(urls))
+" > /tmp/urls.json
+```
+
+Then pass the URL list as seed_urls in the crawl request. A 1200-page batch crawl typically completes in ~6 minutes.
+
+After crawling, run the same ES query from step 6a to confirm zero documents remain in the broken state.
 
 ## 8. Commit, push, deploy, and close
 
