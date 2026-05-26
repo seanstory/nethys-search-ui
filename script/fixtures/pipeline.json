@@ -387,6 +387,18 @@
       }
     },
     {
+      "grok": {
+        "field": "action_cost",
+        "patterns": [
+          "\\[%{DATA:num_actions}\\]"
+        ],
+        "if": "ctx['num_actions'] == null",
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Extracts action cost from crawler's action_cost extraction rule (h1.title span.action)"
+      }
+    },
+    {
       "script": {
         "source": "if (ctx['headings'] != null) { for (String h : ctx['headings']) { def m = /\\[(one-action|two-actions|three-actions|free-action|reaction)\\]/.matcher(h); if (m.find()) { ctx['num_actions'] = m.group(1); break; } } }",
         "if": "ctx['num_actions'] == null",
@@ -408,6 +420,14 @@
     },
     {
       "script": {
+        "source": "if (ctx['full_html'] != null) { def m = /class=['\"]action['\"][^>]*>\\[(one-action|two-actions|three-actions|free-action|reaction)\\]/.matcher(ctx['full_html']); if (m.find()) { ctx['num_actions'] = m.group(1); } }",
+        "if": "ctx['num_actions'] == null",
+        "ignore_failure": true,
+        "description": "Extracts action cost from full_html action span (covers Spells and other pages where headings/subtitle lack the marker)"
+      }
+    },
+    {
+      "script": {
         "source": "if (ctx['body_content'] != null && ctx['body_content'].contains('Requirements')) { ctx['requirements_flag'] = 'yes'; }",
         "ignore_failure": true,
         "description": "Sets requirements_flag when body_content mentions Requirements"
@@ -425,6 +445,7 @@
     {
       "remove": {
         "field": [
+          "action_cost",
           "body_one",
           "body_two",
           "title_prefix",

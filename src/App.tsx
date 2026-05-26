@@ -82,7 +82,7 @@ const config: SearchDriverOptions = {
         return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
       },
       'num_actions': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Actions'))
+        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Actions') || filter.values.includes('Spells')))
       },
       'requirements_flag': ({ filters }) => {
         return filters.some(filter => filter.field === 'category' && filter.values.includes('Actions'))

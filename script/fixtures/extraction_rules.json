@@ -85,6 +85,16 @@
           "multiple_objects_handling": "string",
           "selector": "h1.title > span",
           "source_type": "html"
+        },
+        {
+          "content_from": {
+            "value_type": "extracted",
+            "value": ""
+          },
+          "field_name": "action_cost",
+          "multiple_objects_handling": "string",
+          "selector": "h1.title span.action",
+          "source_type": "html"
         }
       ],
       "edited_by": "514857647"
