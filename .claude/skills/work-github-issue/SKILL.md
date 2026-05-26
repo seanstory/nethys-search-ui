@@ -149,10 +149,9 @@ Also crawl and check a page of a **different** category to confirm the fix didn'
 
 If the fix was verified on a sample, crawl all remaining affected pages in a single batch (the crawler accepts multiple seed URLs). Then run the same ES query from step 6a to confirm zero documents remain in the broken state.
 
-## 8. Commit, push, and close
+## 8. Commit, push, deploy, and close
 
 - Commit the fixture/code change with a message referencing the issue (`Fixes #N`).
 - Push to `main`.
+- If `src/` changed, deploy the frontend: `npm run deploy` (builds and pushes to the `gh-pages` branch). Backend-only fixes (pipeline, crawl rules, extraction rules, engine settings) don't need this.
 - The issue can be closed.
-
-If the fix involved only backend changes (pipeline, crawl rules, etc.) that are already deployed, the push captures the fixture change for version control. The live deployment happened in step 4.
