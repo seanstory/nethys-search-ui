@@ -23,8 +23,19 @@ You can run `npm run start` to run the project locally to test your changes. Onc
 The data that powers the search experience is gathered by Elastic's Crawler, processed through an Elasticsearch Ingest Pipeline, and then exposed through an App Search Engine.
 Details for the deployment and engine being used are in [App.tsx](./src/App.tsx). Reach out to Sean for credentials to access the deployment.
 
-The crawler is scheduled to run a full crawl once per week. However as part of development, you may find it useful to crawl single pages at a depth of `1` in order to test changes made to the crawler extraction rules or ingest pipeline.
-Until https://github.com/seanstory/nethys-search-ui/issues/2 is complete, all changes to the crawler, engine, and pipeline must be made manually.
+The crawler runs a full crawl once per day.
+
+Backend component configurations (pipeline, crawl rules, engine settings) are stored as fixtures in [`script/fixtures/`](./script/fixtures/) and applied via automation scripts in [`script/`](./script/). Copy `.env.example` to `.env` and fill in credentials before running any script.
+
+| Script | Purpose |
+|---|---|
+| `script/update-pipeline.sh` | Push ingest pipeline changes to Elasticsearch |
+| `script/update-crawl-rules.sh` | Sync crawl rules from fixture to the live crawler domain |
+| `script/update-engine.sh` | Push engine search settings to App Search |
+| `script/trigger-crawl.sh` | Trigger a full crawl immediately |
+| `script/trigger-process-crawl.sh` | Re-apply crawl rules to all indexed docs (purges newly-denied URLs without a full recrawl) |
+| `script/check-dead-links.sh` | Report counts of session-token URLs, soft-404 docs, and crawler URL metadata size |
+| `script/delete-dead-links.sh` | One-time bulk delete of session-token docs (dry-run by default; requires `--confirm`) |
 
 ## Available Scripts
 

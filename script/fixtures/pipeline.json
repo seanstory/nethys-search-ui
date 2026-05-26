@@ -3,6 +3,13 @@
   "description": "Ingest pipeline to process crawler data from https://2e.aonprd.com/",
   "processors": [
     {
+      "drop": {
+        "description": "Drop soft-404 pages that return HTTP 200",
+        "if": "ctx['title'] != null && ctx['title'].contains('Page Not Found')",
+        "ignore_failure": true
+      }
+    },
+    {
       "set": {
         "field": "body_content",
         "copy_from": "body_one",
