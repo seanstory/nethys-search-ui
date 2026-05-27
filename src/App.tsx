@@ -70,7 +70,21 @@ function durationOrder(value: string): number {
   return idx === -1 ? DURATION_ORDER.length : idx;
 }
 
-const SpellLevelFacet = sortedFacetView((a, b) => Number(a) - Number(b));
+const NUM_ACTIONS_ORDER = ["free-action", "reaction", "one-action", "two-actions", "three-actions"];
+function numActionsOrder(v: string) { const i = NUM_ACTIONS_ORDER.indexOf(v); return i === -1 ? NUM_ACTIONS_ORDER.length : i; }
+
+const BULK_ORDER = ["—", "L", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "16", "40"];
+function bulkOrder(v: string) { const i = BULK_ORDER.indexOf(v); return i === -1 ? BULK_ORDER.length : i; }
+
+const numericSort = (a: string, b: string) => Number(a) - Number(b);
+
+const SpellLevelFacet = sortedFacetView(numericSort);
+const ItemLevelFacet = sortedFacetView(numericSort);
+const HardnessFacet = sortedFacetView(numericSort);
+const DurabilityFacet = sortedFacetView(numericSort);
+const BreakThresholdFacet = sortedFacetView(numericSort);
+const NumActionsFacet = sortedFacetView((a, b) => numActionsOrder(a) - numActionsOrder(b));
+const BulkFacet = sortedFacetView((a, b) => bulkOrder(a) - bulkOrder(b));
 const DurationFacet = sortedFacetView((a, b) => durationOrder(a) - durationOrder(b));
 
 const connector = new AppSearchAPIConnector({
@@ -239,6 +253,7 @@ export default function App() {
                                 field="num_actions"
                                 label="Number of Actions"
                                 isFilterable={false}
+                                view={NumActionsFacet}
                             />
                             <Facet
                                 field="requirements_flag"
@@ -254,26 +269,31 @@ export default function App() {
                                 field="bulk"
                                 label="Bulk"
                                 isFilterable={false}
+                                view={BulkFacet}
                             />
                             <Facet
                                 field="item_level"
                                 label="Item Level"
                                 isFilterable={false}
+                                view={ItemLevelFacet}
                             />
                             <Facet
                                 field="hardness"
                                 label="Hardness"
                                 isFilterable={false}
+                                view={HardnessFacet}
                             />
                             <Facet
                                 field="durability"
                                 label="Durability (HP)"
                                 isFilterable={false}
+                                view={DurabilityFacet}
                             />
                             <Facet
                                 field="break_threshold"
                                 label="Break Threshold"
                                 isFilterable={false}
+                                view={BreakThresholdFacet}
                             />
                             <Facet
                                 field="traits"
