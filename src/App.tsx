@@ -14,12 +14,64 @@ import {
 import {
   BooleanFacet,
   Layout,
+  MultiCheckboxFacet,
   SingleLinksFacet,
   SingleSelectFacet
 } from "@elastic/react-search-ui-views";
+import { FacetViewProps } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import { SearchDriverOptions } from "@elastic/search-ui";
 import {CustomResultView} from "./components/CustomResultView";
+
+function sortedFacetView(comparator: (a: string, b: string) => number) {
+  return function SortedFacet(props: FacetViewProps) {
+    const sorted = [...props.options].sort((a, b) =>
+      comparator(String(a.value), String(b.value))
+    );
+    return <MultiCheckboxFacet {...props} options={sorted} />;
+  };
+}
+
+const DURATION_ORDER: string[] = [
+  "until the end of your turn",
+  "until the start of your next turn",
+  "until the end of your next turn",
+  "until the end of the target's next turn",
+  "1 round",
+  "1 round or sustained up to 1 minute",
+  "3 rounds",
+  "up to 1 minute",
+  "sustained",
+  "sustained for up to 1 minute",
+  "sustained up to 1 minute",
+  "1 minute",
+  "1 minute (see text)",
+  "1 minute or until discharged",
+  "5 minutes",
+  "10 minutes",
+  "sustained up to 10 minutes",
+  "10 minutes or 8 hours",
+  "12 hours",
+  "1 hour",
+  "8 hours",
+  "24 hours",
+  "1 day",
+  "until you leave the stance",
+  "until your next daily preparations",
+  "until the next time you make your daily preparations",
+  "until the next time you make your daily preparations.",
+  "unlimited",
+  "varies",
+  "see below",
+];
+
+function durationOrder(value: string): number {
+  const idx = DURATION_ORDER.indexOf(value);
+  return idx === -1 ? DURATION_ORDER.length : idx;
+}
+
+const SpellLevelFacet = sortedFacetView((a, b) => Number(a) - Number(b));
+const DurationFacet = sortedFacetView((a, b) => durationOrder(a) - durationOrder(b));
 
 const connector = new AppSearchAPIConnector({
   searchKey: "search-he399pdnh3tms9u3nhwecppr",
@@ -155,6 +207,7 @@ export default function App() {
                                 field="spell_level"
                                 label="Spell Level"
                                 isFilterable={true}
+                                view={SpellLevelFacet}
                             />
                             <Facet
                                 field="bloodlines"
@@ -180,6 +233,7 @@ export default function App() {
                                 field="duration"
                                 label="Duration"
                                 isFilterable={true}
+                                view={DurationFacet}
                             />
                             <Facet
                                 field="num_actions"
