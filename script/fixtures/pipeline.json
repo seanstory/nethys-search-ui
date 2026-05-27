@@ -242,12 +242,14 @@
       "grok": {
         "field": "stripped_html",
         "patterns": [
+          "Range %{DATA:range}; Area %{DATA:area}; Targets %{DATA:target}\\n",
+          "Range %{DATA:range}; Area %{DATA:area}\\n",
           "Range %{DATA:range}; Targets %{DATA:target}\\n",
           "Range %{DATA:range}\\n"
         ],
         "ignore_missing": true,
         "ignore_failure": true,
-        "description": "Extracts 'range' and 'target' from stripped_html"
+        "description": "Extracts 'range', 'area', and 'target' from stripped_html"
       }
     },
     {

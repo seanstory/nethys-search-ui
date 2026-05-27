@@ -107,6 +107,7 @@ const config: SearchDriverOptions = {
       bloodlines: { type: "value", size: 30 },
       casting_components: { type: "value", size: 30 },
       range: { type: "value", size: 30 },
+      area: { type: "value", size: 30 },
       target: { type: "value", size: 30 },
       save: { type: "value", size: 30 },
       deities: { type: "value", size: 250 },
@@ -137,6 +138,9 @@ const config: SearchDriverOptions = {
         return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
       },
       'range': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
+      },
+      'area': ({ filters }) => {
         return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
       },
       'target': ({ filters }) => {
@@ -250,6 +254,11 @@ export default function App() {
                             <Facet
                                 field="range"
                                 label="Range"
+                                isFilterable={true}
+                            />
+                            <Facet
+                                field="area"
+                                label="Area"
                                 isFilterable={true}
                             />
                             <Facet
