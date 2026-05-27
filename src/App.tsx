@@ -244,6 +244,11 @@ export default function App() {
                                 isFilterable={true}
                             />
                             <Facet
+                                field="range"
+                                label="Range"
+                                isFilterable={true}
+                            />
+                            <Facet
                                 field="duration"
                                 label="Duration"
                                 isFilterable={true}
