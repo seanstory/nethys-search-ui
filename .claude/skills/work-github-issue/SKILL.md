@@ -8,6 +8,17 @@ args: <github-issue-url-or-number>
 
 End-to-end workflow: read the issue, investigate, implement a fix, deploy it, crawl affected pages, and verify through the App Search search API.
 
+## Gotchas
+
+Read the relevant gotcha file **before** starting work in that area. Paths are relative to this skill's directory (`.claude/skills/work-github-issue/`).
+
+| When you're...                        | Read                                   |
+|---------------------------------------|----------------------------------------|
+| Writing or modifying grok patterns    | `gotchas/pipeline-grok.md`             |
+| Matching against `full_html`          | `gotchas/crawler-html-normalization.md` |
+| Adding a new facet field              | `gotchas/app-search-facets.md`         |
+| Running a batch crawl (100+ pages)    | `gotchas/batch-crawl-timing.md`        |
+
 ## 1. Understand the issue
 
 ```bash
@@ -33,6 +44,10 @@ curl -s -H "Authorization: ApiKey $ES_API_KEY" -H "Content-Type: application/jso
 
 If the issue involves content extraction or HTML structure, fetch the live Nethys page with `curl` and inspect the raw HTML to understand what the crawler sees.
 
+### Querying the index directly
+
+App Search manages the index mapping. All text fields have a `.enum` keyword subfield that supports exact-match `term` queries and `terms` aggregations. Use `category.enum` (not `category`) for filtering and aggregating by category. The bare `category` field is analyzed text — `term` queries on it silently return zero hits and aggregations fail with a fielddata error.
+
 ### Key backend artifacts (fixtures are source of truth)
 
 | Fixture | What it controls | Deploy script |
@@ -47,31 +62,9 @@ If the issue involves content extraction or HTML structure, fetch the live Nethy
 
 Edit the appropriate fixture file(s). Common patterns:
 
-- **Pipeline fix**: Add/modify processors in `pipeline.json`. Use `remove` with an `if` condition to strip fields from specific page types. Use `grok` or `gsub` for extraction/transformation.
+- **Pipeline fix**: Add/modify processors in `pipeline.json`. Use `remove` with an `if` condition to strip fields from specific page types. Use `grok` or `gsub` for extraction/transformation. **Read `gotchas/pipeline-grok.md` first.**
 - **Crawl rule fix**: Edit `domains.json` to add deny/allow rules.
-- **Frontend fix**: Edit `src/App.tsx` (config, facets) or `src/components/CustomResultView.tsx` (result display).
-
-### Gotcha: Crawler normalizes HTML
-
-The crawler normalizes `full_html` before it reaches the ingest pipeline: attribute order is alphabetized and single quotes become double quotes. For example, raw HTML `<span class='action' title='Two Actions'>` becomes `<span aria-label="Two Actions" class="action" role="img" title="Two Actions">` in `full_html`. **Do not copy regex patterns from `curl` output** — always check the actual `full_html` field in ES (temporarily remove `full_html` from the pipeline's cleanup `remove` processor, crawl a page, then inspect).
-
-### Gotcha: App Search facets on new fields
-
-**Test the App Search facet API before doing a full batch crawl.** The engine is ES-backed and has a constraint: it cannot facet on `boolean` fields, only `text`/`keyword`. If you store a flag as `boolean` (Python `True` or Painless `true`), it gets that mapping and you're stuck — ES won't let you re-map the field type. Use string values like `"yes"` so the field maps as `keyword`.
-
-```bash
-# Quick check before committing to a full batch crawl:
-source script/common.sh
-curl -s -H "Authorization: Bearer $ENT_SEARCH_PRIVATE_KEY" \
-  -H "Content-Type: application/json" \
-  "${ENT_SEARCH_ENDPOINT}/api/as/v1/engines/nethys/search" -d '{
-    "query": "",
-    "facets": {"<new_field>": {"type": "value", "size": 5}},
-    "page": {"size": 1}
-  }' | python3 -m json.tool
-```
-
-If the response contains `"Facets field cannot facet on <field>"`, the field type is wrong.
+- **Frontend fix**: Edit `src/App.tsx` (config, facets) or `src/components/CustomResultView.tsx` (result display). Adding a facet requires three edits: `facets` config, `conditionalFacets` config, and the `<Facet>` JSX in `sideContent`.
 
 ## 4. Deploy backend changes
 
@@ -87,7 +80,7 @@ script/update-curations.sh         # Push curation changes (run after crawl)
 
 ## 5. Test with a targeted crawl
 
-Trigger a **partial crawl** with a shallow depth and custom seed URLs targeting only the affected pages. This re-indexes just those pages through the updated pipeline without running a full crawl (~57K pages).
+Trigger a **partial crawl** with custom seed URLs targeting only the affected pages. This re-indexes just those pages through the updated pipeline without running a full crawl (~57K pages).
 
 ```bash
 source script/common.sh
@@ -103,6 +96,8 @@ curl -s -H "Authorization: ApiKey $ES_API_KEY" \
   }'
 ```
 
+**`max_crawl_depth` minimum is 1** — the API rejects 0. Use `1` for leaf-page-only crawls.
+
 This returns a crawl request ID. Poll for completion:
 
 ```bash
@@ -111,7 +106,7 @@ curl -s -H "Authorization: ApiKey $ES_API_KEY" -H "kbn-xsrf: true" \
   | jq '{status, completed_at}'
 ```
 
-Partial crawls typically complete in under 10 seconds.
+Targeted crawls (1-10 pages) typically complete in under 10 seconds.
 
 ## 6. Verify the fix
 
@@ -151,7 +146,9 @@ Also crawl and check a page of a **different** category to confirm the fix didn'
 
 ## 7. Clean up remaining affected documents
 
-If the fix was verified on a sample, crawl all remaining affected pages in a single batch. The crawler accepts large seed URL lists (1000+). To collect URLs for an entire category, paginate through the App Search search API:
+If the fix was verified on a sample, crawl all remaining affected pages in a single batch. The crawler accepts large seed URL lists (1000+). **Read `gotchas/batch-crawl-timing.md` before starting a large batch.**
+
+To collect URLs for an entire category, paginate through the App Search search API:
 
 ```bash
 source script/common.sh
@@ -178,7 +175,7 @@ print(json.dumps(urls))
 " > /tmp/urls.json
 ```
 
-Then pass the URL list as seed_urls in the crawl request. A 1200-page batch crawl typically completes in ~6 minutes.
+Then pass the URL list as seed_urls in the crawl request.
 
 After crawling, run the same ES query from step 6a to confirm zero documents remain in the broken state.
 
