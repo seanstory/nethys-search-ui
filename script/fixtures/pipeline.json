@@ -463,6 +463,17 @@
       }
     },
     {
+      "grok": {
+        "field": "full_html",
+        "patterns": [
+          "<span style=\\\"margin-left:auto; margin-right:0\\\">Item %{NUMBER:item_level}"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Extracts item level from Equipment/Shields pages"
+      }
+    },
+    {
       "script": {
         "source": "if (ctx['body_content'] != null && ctx['body_content'].contains('Requirements')) { ctx['requirements_flag'] = 'yes'; }",
         "ignore_failure": true,

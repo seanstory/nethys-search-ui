@@ -50,6 +50,7 @@ const config: SearchDriverOptions = {
       requirements_flag: { type: "value", size: 2 },
       usage: { type: "value", size: 30 },
       bulk: { type: "value", size: 30 },
+      item_level: { type: "value", size: 30 },
       hardness: { type: "value", size: 30 },
       durability: { type: "value", size: 30 },
       break_threshold: { type: "value", size: 30 },
@@ -96,6 +97,9 @@ const config: SearchDriverOptions = {
         return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
       },
       'bulk': ({ filters }) => {
+        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
+      },
+      'item_level': ({ filters }) => {
         return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
       },
       'hardness': ({ filters }) => {
@@ -195,6 +199,11 @@ export default function App() {
                             <Facet
                                 field="bulk"
                                 label="Bulk"
+                                isFilterable={false}
+                            />
+                            <Facet
+                                field="item_level"
+                                label="Item Level"
                                 isFilterable={false}
                             />
                             <Facet
