@@ -54,6 +54,93 @@
           },
           "url": {
             "raw": {}
+          },
+          "num_actions": {
+            "raw": {}
+          },
+          "spell_level": {
+            "raw": {}
+          },
+          "spell_type": {
+            "raw": {}
+          },
+          "traditions": {
+            "raw": {}
+          },
+          "save": {
+            "raw": {}
+          },
+          "duration": {
+            "raw": {}
+          },
+          "item_level": {
+            "raw": {}
+          },
+          "bulk": {
+            "raw": {}
+          },
+          "usage": {
+            "raw": {}
+          },
+          "hardness": {
+            "raw": {}
+          },
+          "durability": {
+            "raw": {}
+          },
+          "break_threshold": {
+            "raw": {}
+          },
+          "feat_level": {
+            "raw": {}
+          },
+          "feat_level_bucket": {
+            "raw": {}
+          },
+          "creature_level": {
+            "raw": {}
+          },
+          "creature_level_bucket": {
+            "raw": {}
+          },
+          "creature_size": {
+            "raw": {}
+          },
+          "rarity": {
+            "raw": {}
+          },
+          "source_book": {
+            "raw": {}
+          },
+          "requirements_flag": {
+            "raw": {}
+          },
+          "prerequisites_flag": {
+            "raw": {}
+          },
+          "spell_level_bucket": {
+            "raw": {}
+          },
+          "item_level_bucket": {
+            "raw": {}
+          },
+          "bloodlines": {
+            "raw": {}
+          },
+          "casting_components": {
+            "raw": {}
+          },
+          "range": {
+            "raw": {}
+          },
+          "area": {
+            "raw": {}
+          },
+          "target": {
+            "raw": {}
+          },
+          "deities": {
+            "raw": {}
           }
         },
         "search_fields": {
