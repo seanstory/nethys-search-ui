@@ -78,6 +78,7 @@ function bulkOrder(v: string) { const i = BULK_ORDER.indexOf(v); return i === -1
 
 const numericSort = (a: string, b: string) => Number(a) - Number(b);
 
+const AlphaFacet = sortedFacetView((a, b) => a.localeCompare(b));
 const SpellLevelFacet = sortedFacetView(numericSort);
 const ItemLevelFacet = sortedFacetView(numericSort);
 const HardnessFacet = sortedFacetView(numericSort);
@@ -214,6 +215,7 @@ export default function App() {
                                 field="sub_category"
                                 label="Sub-Category"
                                 isFilterable={true}
+                                view={AlphaFacet}
                             />
                             <Facet
                                 field="spell_type"
