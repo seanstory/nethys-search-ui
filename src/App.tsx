@@ -233,16 +233,19 @@ export default function App() {
                                 label="Spell Level"
                                 isFilterable={true}
                                 view={SpellLevelFacet}
+                                show={10}
                             />
                             <Facet
                                 field="bloodlines"
                                 label="Bloodlines"
                                 isFilterable={true}
+                                show={10}
                             />
                             <Facet
                                 field="deities"
                                 label="Deity"
                                 isFilterable={true}
+                                show={10}
                             />
                             <Facet
                                 field="casting_components"
@@ -258,22 +261,26 @@ export default function App() {
                                 field="range"
                                 label="Range"
                                 isFilterable={true}
+                                show={10}
                             />
                             <Facet
                                 field="area"
                                 label="Area"
                                 isFilterable={true}
+                                show={10}
                             />
                             <Facet
                                 field="target"
                                 label="Target"
                                 isFilterable={true}
+                                show={10}
                             />
                             <Facet
                                 field="duration"
                                 label="Duration"
                                 isFilterable={true}
                                 view={DurationFacet}
+                                show={10}
                             />
                             <Facet
                                 field="num_actions"
@@ -290,6 +297,7 @@ export default function App() {
                                 field="usage"
                                 label="Usage"
                                 isFilterable={true}
+                                show={10}
                             />
                             <Facet
                                 field="bulk"
@@ -302,35 +310,41 @@ export default function App() {
                                 label="Item Level"
                                 isFilterable={false}
                                 view={ItemLevelFacet}
+                                show={10}
                             />
                             <Facet
                                 field="hardness"
                                 label="Hardness"
                                 isFilterable={false}
                                 view={HardnessFacet}
+                                show={10}
                             />
                             <Facet
                                 field="durability"
                                 label="Durability (HP)"
                                 isFilterable={false}
                                 view={DurabilityFacet}
+                                show={10}
                             />
                             <Facet
                                 field="break_threshold"
                                 label="Break Threshold"
                                 isFilterable={false}
                                 view={BreakThresholdFacet}
+                                show={10}
                             />
                             <Facet
                                 field="traits"
                                 label="Traits"
                                 isFilterable={true}
+                                show={10}
                             />
                             <Facet
                                 field="meta_keywords"
                                 label="Keywords"
                                 filterType="any"
                                 isFilterable={true}
+                                show={10}
                             />
                           </div>
                         }
