@@ -19,11 +19,11 @@ function formatPriceGp(priceGp: number): string {
 }
 
 const ACTION_COST_ICONS: Record<string, string> = {
-    "free-action": "◇",
-    "reaction": "↺",
-    "one-action": "◆",
-    "two-actions": "◆◆",
-    "three-actions": "◆◆◆",
+    "free-action": "",
+    "reaction": "",
+    "one-action": "",
+    "two-actions": "",
+    "three-actions": "",
 };
 
 const ACTION_COST_LABELS: Record<string, string> = {
@@ -83,9 +83,10 @@ export const CustomResultView = ({
                     title={ACTION_COST_LABELS[numActions] ?? numActions}
                     style={{
                         marginLeft: "0.5rem",
+                        fontFamily: "'Pathfinder-Icons'",
                         fontSize: "1rem",
                         color: "#8B0000",
-                        fontWeight: "bold",
+                        fontWeight: "normal",
                         whiteSpace: "nowrap",
                         flexShrink: 0,
                     }}
