@@ -319,7 +319,21 @@ export default function App() {
                   <CategoryFilterGuard filters={filters} removeFilter={removeFilter} />
                   <ErrorBoundary>
                     <Layout
-                        header={<SearchBox debounceLength={0} searchAsYouType={true} />}
+                        header={
+                          <React.Fragment>
+                            <SearchBox debounceLength={0} searchAsYouType={true} />
+                            <div style={{ textAlign: "right", marginTop: "0.4rem", fontSize: "0.85rem" }}>
+                              <a
+                                href="https://github.com/seanstory/nethys-search-ui/issues"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ color: "#555", textDecoration: "none" }}
+                              >
+                                Request a feature or report a bug on GitHub ↗
+                              </a>
+                            </div>
+                          </React.Fragment>
+                        }
                         sideContent={
                           <div>
                             {filters.length > 0 && (
