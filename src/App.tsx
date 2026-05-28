@@ -186,7 +186,6 @@ const CONDITIONAL_FACET_FIELDS = [
   'spell_level_bucket',
   'spell_type',
   'num_actions',
-  'requirements',
   'feat_level_bucket',
   'prerequisites_flag',
   'usage',
