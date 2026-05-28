@@ -78,10 +78,15 @@ function bulkOrder(v: string) { const i = BULK_ORDER.indexOf(v); return i === -1
 
 const numericSort = (a: string, b: string) => Number(a) - Number(b);
 
+const CREATURE_SIZE_ORDER = ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"];
+function creatureSizeOrder(v: string) { const i = CREATURE_SIZE_ORDER.indexOf(v); return i === -1 ? CREATURE_SIZE_ORDER.length : i; }
+
 const AlphaFacet = sortedFacetView((a, b) => a.localeCompare(b));
 const SpellLevelFacet = sortedFacetView(numericSort);
 const FeatLevelFacet = sortedFacetView(numericSort);
 const ItemLevelFacet = sortedFacetView(numericSort);
+const CreatureLevelFacet = sortedFacetView(numericSort);
+const CreatureSizeFacet = sortedFacetView((a, b) => creatureSizeOrder(a) - creatureSizeOrder(b));
 const HardnessFacet = sortedFacetView(numericSort);
 const DurabilityFacet = sortedFacetView(numericSort);
 const BreakThresholdFacet = sortedFacetView(numericSort);
@@ -125,6 +130,8 @@ const CONDITIONAL_FACET_FIELDS = [
   'hardness',
   'durability',
   'break_threshold',
+  'creature_level',
+  'creature_size',
 ] as const;
 
 // Helper: check if a filter's values include a given string category.
@@ -201,6 +208,12 @@ const conditionalFacets = {
   'break_threshold': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
   },
+  'creature_level': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Monsters'))
+  },
+  'creature_size': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Monsters'))
+  },
 };
 
 const config: SearchDriverOptions = {
@@ -236,6 +249,8 @@ const config: SearchDriverOptions = {
       hardness: { type: "value", size: 250 },
       durability: { type: "value", size: 250 },
       break_threshold: { type: "value", size: 250 },
+      creature_level: { type: "value", size: 250 },
+      creature_size: { type: "value", size: 10 },
     },
     disjunctiveFacets: ["meta_keywords", "traditions"],
     conditionalFacets,
@@ -455,6 +470,19 @@ export default function App() {
                                 isFilterable={false}
                                 view={BreakThresholdFacet}
                                 show={10}
+                            />
+                            <Facet
+                                field="creature_level"
+                                label="Creature Level"
+                                isFilterable={false}
+                                view={CreatureLevelFacet}
+                                show={10}
+                            />
+                            <Facet
+                                field="creature_size"
+                                label="Size"
+                                isFilterable={false}
+                                view={CreatureSizeFacet}
                             />
                             <Facet
                                 field="traits"

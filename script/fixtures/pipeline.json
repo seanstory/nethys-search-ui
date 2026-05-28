@@ -488,6 +488,28 @@
       }
     },
     {
+      "grok": {
+        "field": "full_html",
+        "patterns": [
+          "<span style=\\\"margin-left:auto; margin-right:0\\\">Creature %{NUMBER:creature_level}"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Extracts creature level from margin-left:auto span on Monsters pages"
+      }
+    },
+    {
+      "grok": {
+        "field": "full_html",
+        "patterns": [
+          "<span class=\\\"traitsize\\\"><a href[^>]+>%{DATA:creature_size}</a>"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Extracts creature size from traitsize span on Monsters pages"
+      }
+    },
+    {
       "script": {
         "source": "if (ctx['full_html'] != null && ctx['full_html'].contains('<b>Prerequisites</b>')) { ctx['prerequisites_flag'] = 'yes'; }",
         "ignore_failure": true,
