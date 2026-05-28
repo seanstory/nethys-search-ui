@@ -51,7 +51,6 @@ export const CustomResultView = ({
     onClickLink: () => void;
 }) => {
     const numActions: string | undefined = result.num_actions?.raw;
-    const hasRequirements: boolean = result.requirements_flag?.raw === "yes";
     const category: string | undefined = result.category?.raw;
     const isEquipment: boolean = typeof category === "string" && EQUIPMENT_CATEGORIES.has(category);
     const isSpell: boolean = category === "Spells";
@@ -199,23 +198,14 @@ export const CustomResultView = ({
                 <li>
                     <span className="sui-result__key">category</span>
                     <span className="sui-result__value">{result.category?.raw}</span>
-                    {hasRequirements && (
-                        <span
-                            title="Has Requirements"
-                            style={{
-                                marginLeft: "0.5rem",
-                                fontSize: "0.75rem",
-                                background: "#6c757d",
-                                color: "#fff",
-                                padding: "1px 6px",
-                                borderRadius: "3px",
-                                verticalAlign: "middle",
-                            }}
-                        >
-                            Req
-                        </span>
-                    )}
                 </li>
+                {
+                    result.requirements?.raw &&
+                    <li>
+                        <span className="sui-result__key">requirements</span>
+                        <span className="sui-result__value">{result.requirements?.raw}</span>
+                    </li>
+                }
                 {
                     result.sub_category?.raw &&
                     <li>
