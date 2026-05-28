@@ -52,6 +52,7 @@ Self-contained means:
 ## Constraints
 - Start on main, and be sure to pull latest
 - Use work-github-issue skill (via Skill tool) for implementation
+- All changes go through PRs — never commit directly to main (the skill handles this)
 ```
 
 Wait for the subagent to complete before spawning the next one.

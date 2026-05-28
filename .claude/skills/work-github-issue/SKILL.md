@@ -193,12 +193,11 @@ After crawling, run the same ES query from step 6a to confirm zero documents rem
 
 ## 8. Commit, push, deploy, and close
 
-It's easiest to track changes for an issue if they're bundled in a PR. So when ready to commit, check out a new branch
+All changes must go through a PR — never commit directly to `main`.
 
-- Commit the fixture/code change with a message referencing the issue (`Fixes #N`).
-- Push to the branch.
-- Create a PR (be sure the PR links to the github issue you're working on)
-- merge the PR
-- If `src/` changed, deploy the frontend: `npm run deploy` (builds and pushes to the `gh-pages` branch). Backend-only fixes (pipeline, crawl rules, extraction rules, engine settings) don't need this.
-- The issue can be closed.
+1. Check out a new branch named after the issue (e.g., `fix/issue-N-short-description`).
+2. Commit the fixture/code change with a message referencing the issue (`Fixes #N`).
+3. Push the branch and open a PR that links to the issue.
+4. After the PR is merged: if `src/` changed, deploy the frontend: `npm run deploy` (builds and pushes to the `gh-pages` branch). Backend-only fixes (pipeline, crawl rules, extraction rules, engine settings) don't need this.
+5. The issue will be auto-closed when the PR merges (via `Fixes #N`). If not, close it manually.
 
