@@ -6,7 +6,7 @@
     "_source": {
       "id": "6419c4ebb35f0f52d96c2b33",
       "created_at": "2023-03-21T14:53:31Z",
-      "updated_at": "2026-05-25T00:00:04Z",
+      "updated_at": "2026-05-28T00:00:00Z",
       "configuration_oid": "6419c4c0b35f0ffe906c2b2b",
       "name": "https://2e.aonprd.com",
       "crawl_rules": [
@@ -231,6 +231,1386 @@
           "created_at": "2026-05-28T00:00:00Z",
           "id": "6849c023b35f0f9ede6c2c23",
           "url": "https://2e.aonprd.com/MythicRituals.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0089b35f0f9ede6c0000",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=89"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0090b35f0f9ede6c0001",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=90"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0091b35f0f9ede6c0002",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=91"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0092b35f0f9ede6c0003",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=92"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0093b35f0f9ede6c0004",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=93"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0094b35f0f9ede6c0005",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=94"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0098b35f0f9ede6c0006",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=98"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0120b35f0f9ede6c0007",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=120"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0121b35f0f9ede6c0008",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=121"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0124b35f0f9ede6c0009",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=124"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0126b35f0f9ede6c0010",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=126"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0127b35f0f9ede6c0011",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=127"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0128b35f0f9ede6c0012",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=128"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0129b35f0f9ede6c0013",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=129"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0141b35f0f9ede6c0014",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=141"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0143b35f0f9ede6c0015",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=143"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0144b35f0f9ede6c0016",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=144"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0145b35f0f9ede6c0017",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=145"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0148b35f0f9ede6c0018",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=148"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0149b35f0f9ede6c0019",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=149"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0158b35f0f9ede6c0020",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=158"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0163b35f0f9ede6c0021",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=163"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0169b35f0f9ede6c0022",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=169"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0173b35f0f9ede6c0023",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=173"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0178b35f0f9ede6c0024",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=178"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0181b35f0f9ede6c0025",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=181"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0183b35f0f9ede6c0026",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=183"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0209b35f0f9ede6c0027",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=209"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0210b35f0f9ede6c0028",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=210"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0211b35f0f9ede6c0029",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=211"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0212b35f0f9ede6c0030",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=212"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0227b35f0f9ede6c0031",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=227"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0229b35f0f9ede6c0032",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=229"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0246b35f0f9ede6c0033",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=246"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0247b35f0f9ede6c0034",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=247"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0253b35f0f9ede6c0035",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=253"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0254b35f0f9ede6c0036",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=254"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0255b35f0f9ede6c0037",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=255"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0256b35f0f9ede6c0038",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=256"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0286b35f0f9ede6c0039",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=286"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0305b35f0f9ede6c0040",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=305"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0338b35f0f9ede6c0041",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=338"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0340b35f0f9ede6c0042",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=340"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0349b35f0f9ede6c0043",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=349"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0351b35f0f9ede6c0044",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=351"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0353b35f0f9ede6c0045",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=353"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0357b35f0f9ede6c0046",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=357"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0358b35f0f9ede6c0047",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=358"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0360b35f0f9ede6c0048",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=360"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0362b35f0f9ede6c0049",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=362"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0363b35f0f9ede6c0050",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=363"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0364b35f0f9ede6c0051",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=364"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0369b35f0f9ede6c0052",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=369"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0370b35f0f9ede6c0053",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=370"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0371b35f0f9ede6c0054",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=371"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0373b35f0f9ede6c0055",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=373"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0374b35f0f9ede6c0056",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=374"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0376b35f0f9ede6c0057",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=376"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0377b35f0f9ede6c0058",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=377"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0378b35f0f9ede6c0059",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=378"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0379b35f0f9ede6c0060",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=379"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0382b35f0f9ede6c0061",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=382"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0384b35f0f9ede6c0062",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=384"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0385b35f0f9ede6c0063",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=385"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0386b35f0f9ede6c0064",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=386"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0387b35f0f9ede6c0065",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=387"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0388b35f0f9ede6c0066",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=388"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0389b35f0f9ede6c0067",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=389"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0391b35f0f9ede6c0068",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=391"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0393b35f0f9ede6c0069",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=393"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0395b35f0f9ede6c0070",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=395"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0396b35f0f9ede6c0071",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=396"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0397b35f0f9ede6c0072",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=397"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0398b35f0f9ede6c0073",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=398"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0399b35f0f9ede6c0074",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=399"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0400b35f0f9ede6c0075",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=400"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0402b35f0f9ede6c0076",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=402"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0403b35f0f9ede6c0077",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=403"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0404b35f0f9ede6c0078",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=404"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0405b35f0f9ede6c0079",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=405"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0406b35f0f9ede6c0080",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=406"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0408b35f0f9ede6c0081",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=408"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0410b35f0f9ede6c0082",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=410"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0411b35f0f9ede6c0083",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=411"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0412b35f0f9ede6c0084",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=412"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0413b35f0f9ede6c0085",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=413"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0414b35f0f9ede6c0086",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=414"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0415b35f0f9ede6c0087",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=415"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0416b35f0f9ede6c0088",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=416"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0417b35f0f9ede6c0089",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=417"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0418b35f0f9ede6c0090",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=418"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0419b35f0f9ede6c0091",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=419"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0420b35f0f9ede6c0092",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=420"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0421b35f0f9ede6c0093",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=421"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0422b35f0f9ede6c0094",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=422"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0425b35f0f9ede6c0095",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=425"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0428b35f0f9ede6c0096",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=428"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0430b35f0f9ede6c0097",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=430"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0432b35f0f9ede6c0098",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=432"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0433b35f0f9ede6c0099",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=433"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0442b35f0f9ede6c0100",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=442"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0446b35f0f9ede6c0101",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=446"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0447b35f0f9ede6c0102",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=447"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0448b35f0f9ede6c0103",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=448"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0449b35f0f9ede6c0104",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=449"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0450b35f0f9ede6c0105",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=450"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0467b35f0f9ede6c0106",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=467"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0468b35f0f9ede6c0107",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=468"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0469b35f0f9ede6c0108",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=469"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0470b35f0f9ede6c0109",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=470"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0471b35f0f9ede6c0110",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=471"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0472b35f0f9ede6c0111",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=472"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0473b35f0f9ede6c0112",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=473"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0474b35f0f9ede6c0113",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=474"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0475b35f0f9ede6c0114",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=475"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0476b35f0f9ede6c0115",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=476"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0477b35f0f9ede6c0116",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=477"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0478b35f0f9ede6c0117",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=478"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0479b35f0f9ede6c0118",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=479"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0480b35f0f9ede6c0119",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=480"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0481b35f0f9ede6c0120",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=481"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0482b35f0f9ede6c0121",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=482"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0491b35f0f9ede6c0122",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=491"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0492b35f0f9ede6c0123",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=492"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0493b35f0f9ede6c0124",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=493"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0494b35f0f9ede6c0125",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=494"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0495b35f0f9ede6c0126",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=495"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0505b35f0f9ede6c0127",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=505"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0506b35f0f9ede6c0128",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=506"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0507b35f0f9ede6c0129",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=507"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0508b35f0f9ede6c0130",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=508"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0510b35f0f9ede6c0131",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=510"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0511b35f0f9ede6c0132",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=511"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0512b35f0f9ede6c0133",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=512"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0513b35f0f9ede6c0134",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=513"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0515b35f0f9ede6c0135",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=515"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0516b35f0f9ede6c0136",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=516"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0517b35f0f9ede6c0137",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=517"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0518b35f0f9ede6c0138",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=518"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0519b35f0f9ede6c0139",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=519"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0520b35f0f9ede6c0140",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=520"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0521b35f0f9ede6c0141",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=521"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0522b35f0f9ede6c0142",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=522"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0523b35f0f9ede6c0143",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=523"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0525b35f0f9ede6c0144",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=525"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0527b35f0f9ede6c0145",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=527"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0528b35f0f9ede6c0146",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=528"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0529b35f0f9ede6c0147",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=529"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0530b35f0f9ede6c0148",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=530"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0531b35f0f9ede6c0149",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=531"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0532b35f0f9ede6c0150",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=532"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0533b35f0f9ede6c0151",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=533"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0534b35f0f9ede6c0152",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=534"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0535b35f0f9ede6c0153",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=535"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0536b35f0f9ede6c0154",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=536"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0537b35f0f9ede6c0155",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=537"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0538b35f0f9ede6c0156",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=538"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0539b35f0f9ede6c0157",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=539"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0540b35f0f9ede6c0158",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=540"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0543b35f0f9ede6c0159",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=543"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0544b35f0f9ede6c0160",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=544"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0545b35f0f9ede6c0161",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=545"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0546b35f0f9ede6c0162",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=546"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0547b35f0f9ede6c0163",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=547"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0548b35f0f9ede6c0164",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=548"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0549b35f0f9ede6c0165",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=549"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0551b35f0f9ede6c0166",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=551"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0554b35f0f9ede6c0167",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=554"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0555b35f0f9ede6c0168",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=555"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0556b35f0f9ede6c0169",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=556"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0557b35f0f9ede6c0170",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=557"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0558b35f0f9ede6c0171",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=558"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0559b35f0f9ede6c0172",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=559"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0561b35f0f9ede6c0173",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=561"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0562b35f0f9ede6c0174",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=562"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0563b35f0f9ede6c0175",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=563"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0565b35f0f9ede6c0176",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=565"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0566b35f0f9ede6c0177",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=566"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0567b35f0f9ede6c0178",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=567"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0568b35f0f9ede6c0179",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=568"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0569b35f0f9ede6c0180",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=569"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0570b35f0f9ede6c0181",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=570"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0571b35f0f9ede6c0182",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=571"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0572b35f0f9ede6c0183",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=572"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0573b35f0f9ede6c0184",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=573"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0574b35f0f9ede6c0185",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=574"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0575b35f0f9ede6c0186",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=575"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0576b35f0f9ede6c0187",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=576"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0577b35f0f9ede6c0188",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=577"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0578b35f0f9ede6c0189",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=578"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0579b35f0f9ede6c0190",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=579"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0580b35f0f9ede6c0191",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=580"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0581b35f0f9ede6c0192",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=581"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0582b35f0f9ede6c0193",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=582"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0583b35f0f9ede6c0194",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=583"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0584b35f0f9ede6c0195",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=584"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0585b35f0f9ede6c0196",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=585"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0586b35f0f9ede6c0197",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=586"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0587b35f0f9ede6c0198",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=587"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0588b35f0f9ede6c0199",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=588"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0589b35f0f9ede6c0200",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=589"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0590b35f0f9ede6c0201",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=590"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0591b35f0f9ede6c0202",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=591"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0592b35f0f9ede6c0203",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=592"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0593b35f0f9ede6c0204",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=593"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0594b35f0f9ede6c0205",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=594"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0595b35f0f9ede6c0206",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=595"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0596b35f0f9ede6c0207",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=596"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0597b35f0f9ede6c0208",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=597"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0598b35f0f9ede6c0209",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=598"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0599b35f0f9ede6c0210",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=599"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0601b35f0f9ede6c0211",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=601"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0602b35f0f9ede6c0212",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=602"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0603b35f0f9ede6c0213",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=603"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0604b35f0f9ede6c0214",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=604"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0606b35f0f9ede6c0215",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=606"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0607b35f0f9ede6c0216",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=607"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0608b35f0f9ede6c0217",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=608"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0609b35f0f9ede6c0218",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=609"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0610b35f0f9ede6c0219",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=610"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0611b35f0f9ede6c0220",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=611"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0612b35f0f9ede6c0221",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=612"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0613b35f0f9ede6c0222",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=613"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0614b35f0f9ede6c0223",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=614"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0615b35f0f9ede6c0224",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=615"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0616b35f0f9ede6c0225",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=616"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0617b35f0f9ede6c0226",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=617"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0618b35f0f9ede6c0227",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=618"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0619b35f0f9ede6c0228",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=619"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0620b35f0f9ede6c0229",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=620"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0621b35f0f9ede6c0230",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=621"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0622b35f0f9ede6c0231",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=622"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0623b35f0f9ede6c0232",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=623"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0624b35f0f9ede6c0233",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=624"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0625b35f0f9ede6c0234",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=625"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0626b35f0f9ede6c0235",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=626"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0627b35f0f9ede6c0236",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=627"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0628b35f0f9ede6c0237",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=628"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0629b35f0f9ede6c0238",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=629"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0630b35f0f9ede6c0239",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=630"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0631b35f0f9ede6c0240",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=631"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0632b35f0f9ede6c0241",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=632"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0633b35f0f9ede6c0242",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=633"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0634b35f0f9ede6c0243",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=634"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0635b35f0f9ede6c0244",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=635"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0636b35f0f9ede6c0245",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=636"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0637b35f0f9ede6c0246",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=637"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0638b35f0f9ede6c0247",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=638"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0639b35f0f9ede6c0248",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=639"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0640b35f0f9ede6c0249",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=640"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0641b35f0f9ede6c0250",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=641"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0642b35f0f9ede6c0251",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=642"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0643b35f0f9ede6c0252",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=643"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0644b35f0f9ede6c0253",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=644"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0645b35f0f9ede6c0254",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=645"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0646b35f0f9ede6c0255",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=646"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0647b35f0f9ede6c0256",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=647"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0648b35f0f9ede6c0257",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=648"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0649b35f0f9ede6c0258",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=649"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0650b35f0f9ede6c0259",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=650"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0651b35f0f9ede6c0260",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=651"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0652b35f0f9ede6c0261",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=652"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0653b35f0f9ede6c0262",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=653"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0654b35f0f9ede6c0263",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=654"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0655b35f0f9ede6c0264",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=655"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0656b35f0f9ede6c0265",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=656"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0657b35f0f9ede6c0266",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=657"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0658b35f0f9ede6c0267",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=658"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0659b35f0f9ede6c0268",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=659"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0660b35f0f9ede6c0269",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=660"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0661b35f0f9ede6c0270",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=661"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0662b35f0f9ede6c0271",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=662"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0663b35f0f9ede6c0272",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=663"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0664b35f0f9ede6c0273",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=664"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0665b35f0f9ede6c0274",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=665"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849w0666b35f0f9ede6c0275",
+          "url": "https://2e.aonprd.com/Weapons.aspx?ID=666"
         }
       ],
       "sitemaps": [],
