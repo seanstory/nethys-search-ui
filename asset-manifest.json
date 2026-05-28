@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/nethys-search-ui/static/css/main.c0d9a361.css",
-    "main.js": "/nethys-search-ui/static/js/main.6d65c4c2.js",
+    "main.css": "/nethys-search-ui/static/css/main.276e1d4c.css",
+    "main.js": "/nethys-search-ui/static/js/main.4d95c9d6.js",
     "static/js/787.67a8297f.chunk.js": "/nethys-search-ui/static/js/787.67a8297f.chunk.js",
+    "static/media/Pathfinder-Icons.ttf": "/nethys-search-ui/static/media/Pathfinder-Icons.681e6974f899b87cc126.ttf",
     "index.html": "/nethys-search-ui/index.html",
-    "main.c0d9a361.css.map": "/nethys-search-ui/static/css/main.c0d9a361.css.map",
-    "main.6d65c4c2.js.map": "/nethys-search-ui/static/js/main.6d65c4c2.js.map",
+    "main.276e1d4c.css.map": "/nethys-search-ui/static/css/main.276e1d4c.css.map",
+    "main.4d95c9d6.js.map": "/nethys-search-ui/static/js/main.4d95c9d6.js.map",
     "787.67a8297f.chunk.js.map": "/nethys-search-ui/static/js/787.67a8297f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c0d9a361.css",
-    "static/js/main.6d65c4c2.js"
+    "static/css/main.276e1d4c.css",
+    "static/js/main.4d95c9d6.js"
   ]
 }
