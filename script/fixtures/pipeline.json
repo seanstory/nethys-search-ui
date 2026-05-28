@@ -583,6 +583,15 @@
     },
     {
       "remove": {
+        "field": "num_actions",
+        "if": "ctx['category'] == 'Classes'",
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Classes are not actions/spells; remove num_actions extracted from embedded actions within class page bodies"
+      }
+    },
+    {
+      "remove": {
         "field": [
           "action_cost",
           "body_one",
