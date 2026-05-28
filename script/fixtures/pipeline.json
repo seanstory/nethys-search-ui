@@ -330,6 +330,13 @@
       }
     },
     {
+      "script": {
+        "description": "Extracts price_gp from body_content: parses 'Price N gp/sp/cp/pp' (with optional multi-denomination like '1 gp, 5 sp') and converts to gold pieces",
+        "source": "if (ctx[\"body_content\"] != null) {\n  def m = /Price (\\d[\\d,]*(?:\\.\\d+)?) (gp|sp|cp|pp)(?:, (\\d[\\d,]*(?:\\.\\d+)?) (gp|sp|cp|pp))?(?:, (\\d[\\d,]*(?:\\.\\d+)?) (gp|sp|cp|pp))?/.matcher(ctx[\"body_content\"]);\n  if (m.find()) {\n    double total = 0;\n    String n1 = m.group(1).replace(\",\", \"\");\n    String d1 = m.group(2);\n    double v1 = Double.parseDouble(n1);\n    if (d1.equals(\"pp\")) total += v1 * 10;\n    else if (d1.equals(\"gp\")) total += v1;\n    else if (d1.equals(\"sp\")) total += v1 / 10.0;\n    else if (d1.equals(\"cp\")) total += v1 / 100.0;\n    if (m.group(3) != null) {\n      String n2 = m.group(3).replace(\",\", \"\");\n      String d2 = m.group(4);\n      double v2 = Double.parseDouble(n2);\n      if (d2.equals(\"pp\")) total += v2 * 10;\n      else if (d2.equals(\"gp\")) total += v2;\n      else if (d2.equals(\"sp\")) total += v2 / 10.0;\n      else if (d2.equals(\"cp\")) total += v2 / 100.0;\n    }\n    if (m.group(5) != null) {\n      String n3 = m.group(5).replace(\",\", \"\");\n      String d3 = m.group(6);\n      double v3 = Double.parseDouble(n3);\n      if (d3.equals(\"pp\")) total += v3 * 10;\n      else if (d3.equals(\"gp\")) total += v3;\n      else if (d3.equals(\"sp\")) total += v3 / 10.0;\n      else if (d3.equals(\"cp\")) total += v3 / 100.0;\n    }\n    ctx[\"price_gp\"] = total;\n  }\n}",
+        "ignore_failure": true
+      }
+    },
+    {
       "grok": {
         "field": "stripped_html",
         "patterns": [
