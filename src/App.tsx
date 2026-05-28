@@ -1,5 +1,5 @@
 import AppSearchAPIConnector from "@elastic/search-ui-app-search-connector";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   ErrorBoundary,
   Facet,
@@ -20,7 +20,7 @@ import {
 } from "@elastic/react-search-ui-views";
 import { FacetViewProps } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
-import { SearchDriverOptions } from "@elastic/search-ui";
+import { SearchDriverOptions, Filter } from "@elastic/search-ui";
 import {CustomResultView} from "./components/CustomResultView";
 
 function sortedFacetView(comparator: (a: string, b: string) => number) {
@@ -94,6 +94,106 @@ const connector = new AppSearchAPIConnector({
   endpointBase: "https://eff02e5b84a6427295fafb8589d99cf7.ent-search.us-west2.gcp.elastic-cloud.com"
 });
 
+// Fields that are only relevant for specific categories. When the user
+// switches to a different category, any active filters on these fields will
+// be automatically cleared to prevent stale/broken search state.
+//
+// sub_category values are category-specific (e.g. "Cantrip" only exists
+// under Spells) so it's also included here even though its conditional
+// predicate only requires *any* category to be active.
+const CONDITIONAL_FACET_FIELDS = [
+  'sub_category',
+  'traditions',
+  'bloodlines',
+  'casting_components',
+  'range',
+  'area',
+  'target',
+  'save',
+  'deities',
+  'duration',
+  'spell_level',
+  'spell_type',
+  'num_actions',
+  'requirements_flag',
+  'usage',
+  'bulk',
+  'item_level',
+  'hardness',
+  'durability',
+  'break_threshold',
+] as const;
+
+// Helper: check if a filter's values include a given string category.
+// Filter.values is FilterValue[] (string | number | boolean | range), but
+// category values are always strings in practice.
+function filterHasCategory(filter: Filter, category: string): boolean {
+  return filter.values.some(v => v === category);
+}
+
+const conditionalFacets = {
+  'sub_category': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category')
+  },
+  'traditions': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
+  },
+  'bloodlines': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
+  },
+  'casting_components': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
+  },
+  'range': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
+  },
+  'area': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
+  },
+  'target': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
+  },
+  'save': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
+  },
+  'deities': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
+  },
+  'duration': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
+  },
+  'spell_level': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
+  },
+  'spell_type': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
+  },
+  'num_actions': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Actions') || filterHasCategory(filter, 'Spells')))
+  },
+  'requirements_flag': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Actions'))
+  },
+  'usage': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
+  },
+  'bulk': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
+  },
+  'item_level': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
+  },
+  'hardness': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
+  },
+  'durability': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
+  },
+  'break_threshold': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
+  },
+};
+
 const config: SearchDriverOptions = {
   alwaysSearchOnInitialLoad: true,
   apiConnector: connector,
@@ -125,83 +225,69 @@ const config: SearchDriverOptions = {
       break_threshold: { type: "value", size: 250 },
     },
     disjunctiveFacets: ["meta_keywords", "traditions"],
-    conditionalFacets: {
-      'sub_category': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category')
-      },
-      'traditions': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'bloodlines': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'casting_components': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'range': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'area': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'target': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'save': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'deities': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'duration': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'spell_level': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'spell_type': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Spells'))
-      },
-      'num_actions': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Actions') || filter.values.includes('Spells')))
-      },
-      'requirements_flag': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && filter.values.includes('Actions'))
-      },
-      'usage': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
-      },
-      'bulk': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
-      },
-      'item_level': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
-      },
-      'hardness': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
-      },
-      'durability': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
-      },
-      'break_threshold': ({ filters }) => {
-        return filters.some(filter => filter.field === 'category' && (filter.values.includes('Equipment') || filter.values.includes('Shields')))
-      },
-    }
+    conditionalFacets,
   }
 };
+
+// Clears stale category-specific filters whenever the active category changes.
+// Without this, switching from e.g. Spells to Equipment leaves Spell Level /
+// Traditions / etc. filters active, producing empty or misleading results.
+function CategoryFilterGuard({
+  filters,
+  removeFilter,
+}: {
+  filters: Filter[];
+  removeFilter: (field: string) => void;
+}) {
+  // Track the set of active category values across renders.
+  const prevCategoryValuesRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    const categoryFilter = filters.find(f => f.field === 'category');
+    const categoryValues = categoryFilter
+      ? [...categoryFilter.values].map(String).sort().join(',')
+      : '';
+
+    // Only act when the category selection actually changed.
+    if (prevCategoryValuesRef.current === null) {
+      prevCategoryValuesRef.current = categoryValues;
+      return;
+    }
+    if (prevCategoryValuesRef.current === categoryValues) return;
+
+    prevCategoryValuesRef.current = categoryValues;
+
+    // Remove any conditional-facet filters that are no longer applicable.
+    for (const field of CONDITIONAL_FACET_FIELDS) {
+      const hasActiveFilter = filters.some(f => f.field === field);
+      if (!hasActiveFilter) continue;
+
+      const predicate = conditionalFacets[field as keyof typeof conditionalFacets];
+      const stillVisible = predicate({ filters });
+      if (!stillVisible) {
+        removeFilter(field);
+      }
+    }
+  }, [filters, removeFilter]);
+
+  return null;
+}
 
 export default function App() {
   return (
       <SearchProvider config={config}>
         <WithSearch
-            mapContextToProps={({ wasSearched, results }) => ({
+            mapContextToProps={({ wasSearched, results, filters, removeFilter }) => ({
               wasSearched,
-              results
+              results,
+              filters,
+              removeFilter,
             })}
         >
-          {({ wasSearched, results }) => {
+          {({ wasSearched, results, filters, removeFilter }) => {
             return (
                 <div className="App">
+                  <CategoryFilterGuard filters={filters} removeFilter={removeFilter} />
                   <ErrorBoundary>
                     <Layout
                         header={<SearchBox debounceLength={0} searchAsYouType={true} />}
