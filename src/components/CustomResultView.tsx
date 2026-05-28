@@ -16,6 +16,8 @@ const ACTION_COST_LABELS: Record<string, string> = {
     "three-actions": "3 Actions",
 };
 
+const EQUIPMENT_CATEGORIES = new Set(["Equipment", "Shields"]);
+
 export const CustomResultView = ({
                               result,
                               onClickLink
@@ -25,6 +27,11 @@ export const CustomResultView = ({
 }) => {
     const numActions: string | undefined = result.num_actions?.raw;
     const hasRequirements: boolean = result.requirements_flag?.raw === "yes";
+    const category: string | undefined = result.category?.raw;
+    const isEquipment: boolean = typeof category === "string" && EQUIPMENT_CATEGORIES.has(category);
+    const itemLevel: string | undefined = isEquipment ? result.item_level?.raw : undefined;
+    const bulk: string | undefined = isEquipment ? result.bulk?.raw : undefined;
+    const usage: string | undefined = isEquipment ? result.usage?.raw : undefined;
 
     return (
     <li className="sui-result">
@@ -46,6 +53,55 @@ export const CustomResultView = ({
                     }}
                 >
                     {ACTION_COST_ICONS[numActions] ?? numActions}
+                </span>
+            )}
+            {isEquipment && (itemLevel || bulk || usage) && (
+                <span style={{ marginLeft: "0.5rem", display: "inline-flex", gap: "0.35rem", flexWrap: "wrap", flexShrink: 0 }}>
+                    {itemLevel && (
+                        <span
+                            title="Item Level"
+                            style={{
+                                fontSize: "0.75rem",
+                                background: "#5b3a8e",
+                                color: "#fff",
+                                padding: "1px 6px",
+                                borderRadius: "3px",
+                                whiteSpace: "nowrap",
+                            }}
+                        >
+                            Lvl {itemLevel}
+                        </span>
+                    )}
+                    {bulk && (
+                        <span
+                            title="Bulk"
+                            style={{
+                                fontSize: "0.75rem",
+                                background: "#2c5f8a",
+                                color: "#fff",
+                                padding: "1px 6px",
+                                borderRadius: "3px",
+                                whiteSpace: "nowrap",
+                            }}
+                        >
+                            Bulk {bulk}
+                        </span>
+                    )}
+                    {usage && (
+                        <span
+                            title="Usage"
+                            style={{
+                                fontSize: "0.75rem",
+                                background: "#3a6e4a",
+                                color: "#fff",
+                                padding: "1px 6px",
+                                borderRadius: "3px",
+                                whiteSpace: "nowrap",
+                            }}
+                        >
+                            {usage}
+                        </span>
+                    )}
                 </span>
             )}
             {
