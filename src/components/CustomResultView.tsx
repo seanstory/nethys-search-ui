@@ -18,6 +18,13 @@ const ACTION_COST_LABELS: Record<string, string> = {
 
 const EQUIPMENT_CATEGORIES = new Set(["Equipment", "Shields"]);
 
+const TRADITION_COLORS: Record<string, string> = {
+    "arcane":   "#3a4e8c",
+    "divine":   "#8c6b1a",
+    "occult":   "#5b3a8e",
+    "primal":   "#2e6e3a",
+};
+
 export const CustomResultView = ({
                               result,
                               onClickLink
@@ -29,9 +36,16 @@ export const CustomResultView = ({
     const hasRequirements: boolean = result.requirements_flag?.raw === "yes";
     const category: string | undefined = result.category?.raw;
     const isEquipment: boolean = typeof category === "string" && EQUIPMENT_CATEGORIES.has(category);
+    const isSpell: boolean = category === "Spells";
     const itemLevel: string | undefined = isEquipment ? result.item_level?.raw : undefined;
     const bulk: string | undefined = isEquipment ? result.bulk?.raw : undefined;
     const usage: string | undefined = isEquipment ? result.usage?.raw : undefined;
+    const spellLevel: string | undefined = isSpell ? result.spell_level?.raw : undefined;
+    const traditions: string[] = isSpell && result.traditions?.raw
+        ? (Array.isArray(result.traditions.raw) ? result.traditions.raw : [result.traditions.raw])
+        : [];
+    const saveThrow: string | undefined = isSpell ? result.save?.raw : undefined;
+    const duration: string | undefined = isSpell ? result.duration?.raw : undefined;
 
     return (
     <li className="sui-result">
@@ -53,6 +67,23 @@ export const CustomResultView = ({
                     }}
                 >
                     {ACTION_COST_ICONS[numActions] ?? numActions}
+                </span>
+            )}
+            {isSpell && spellLevel && (
+                <span
+                    title="Spell Level"
+                    style={{
+                        marginLeft: "0.5rem",
+                        fontSize: "0.75rem",
+                        background: "#8B0000",
+                        color: "#fff",
+                        padding: "1px 6px",
+                        borderRadius: "3px",
+                        whiteSpace: "nowrap",
+                        flexShrink: 0,
+                    }}
+                >
+                    Spell {spellLevel}
                 </span>
             )}
             {isEquipment && (itemLevel || bulk || usage) && (
@@ -163,6 +194,61 @@ export const CustomResultView = ({
                         <span className="sui-result__value" dangerouslySetInnerHTML={{__html: result.body_content?.snippet}}/>
                     </li>
                 }
+                {isSpell && (traditions.length > 0 || saveThrow || duration) && (
+                    <li>
+                        <span className="sui-result__key">spell</span>
+                        <span className="sui-result__value" style={{ display: "inline-flex", gap: "0.35rem", flexWrap: "wrap" }}>
+                            {traditions.map((trad: string) => (
+                                <span
+                                    key={trad}
+                                    title={`Tradition: ${trad}`}
+                                    style={{
+                                        fontSize: "0.75rem",
+                                        background: TRADITION_COLORS[trad.toLowerCase()] ?? "#555",
+                                        color: "#fff",
+                                        padding: "1px 6px",
+                                        borderRadius: "3px",
+                                        whiteSpace: "nowrap",
+                                        textTransform: "capitalize",
+                                    }}
+                                >
+                                    {trad}
+                                </span>
+                            ))}
+                            {saveThrow && (
+                                <span
+                                    title="Saving Throw"
+                                    style={{
+                                        fontSize: "0.75rem",
+                                        background: "#6c4a00",
+                                        color: "#fff",
+                                        padding: "1px 6px",
+                                        borderRadius: "3px",
+                                        whiteSpace: "nowrap",
+                                        textTransform: "capitalize",
+                                    }}
+                                >
+                                    Save: {saveThrow}
+                                </span>
+                            )}
+                            {duration && (
+                                <span
+                                    title="Duration"
+                                    style={{
+                                        fontSize: "0.75rem",
+                                        background: "#2c5f8a",
+                                        color: "#fff",
+                                        padding: "1px 6px",
+                                        borderRadius: "3px",
+                                        whiteSpace: "nowrap",
+                                    }}
+                                >
+                                    {duration}
+                                </span>
+                            )}
+                        </span>
+                    </li>
+                )}
                 {
                     result.traits?.raw && Object.values(result.traits?.raw).length > 0 &&
                     <li>
