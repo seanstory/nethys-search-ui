@@ -204,6 +204,7 @@ const config: SearchDriverOptions = {
       sub_category: { type: "value", size: 30 },
       rarity: { type: "value", size: 10 },
       traits: { type: "value", size: 30 },
+      source_book: { type: "value", size: 50 },
       meta_keywords: { type: "value", size: 30 },
       traditions: { type: "value", size: 30 },
       bloodlines: { type: "value", size: 30 },
@@ -309,6 +310,13 @@ export default function App() {
                                 field="rarity"
                                 label="Rarity"
                                 isFilterable={false}
+                            />
+                            <Facet
+                                field="source_book"
+                                label="Source Book"
+                                isFilterable={true}
+                                view={AlphaFacet}
+                                show={10}
                             />
                             <Facet
                                 field="spell_type"

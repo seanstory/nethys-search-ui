@@ -491,6 +491,13 @@
       }
     },
     {
+      "script": {
+        "source": "if (ctx['full_html'] != null) { def m = /<b>Source<\\/b> <a [^>]+><i>([^<]+) pg\\. \\d+<\\/i>/.matcher(ctx['full_html']); if (m.find()) { ctx['source_book'] = m.group(1); } }",
+        "ignore_failure": true,
+        "description": "Extracts source publication name (e.g. 'Core Rulebook') from full_html stat block source link"
+      }
+    },
+    {
       "remove": {
         "field": "traits",
         "if": "ctx['url'] != null && ctx['url'].contains('Classes.aspx')",
