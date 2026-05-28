@@ -80,6 +80,7 @@ const numericSort = (a: string, b: string) => Number(a) - Number(b);
 
 const AlphaFacet = sortedFacetView((a, b) => a.localeCompare(b));
 const SpellLevelFacet = sortedFacetView(numericSort);
+const FeatLevelFacet = sortedFacetView(numericSort);
 const ItemLevelFacet = sortedFacetView(numericSort);
 const HardnessFacet = sortedFacetView(numericSort);
 const DurabilityFacet = sortedFacetView(numericSort);
@@ -116,6 +117,8 @@ const CONDITIONAL_FACET_FIELDS = [
   'spell_type',
   'num_actions',
   'requirements_flag',
+  'feat_level',
+  'prerequisites_flag',
   'usage',
   'bulk',
   'item_level',
@@ -174,6 +177,12 @@ const conditionalFacets = {
   'requirements_flag': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Actions'))
   },
+  'feat_level': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Feats'))
+  },
+  'prerequisites_flag': ({ filters }: { filters: Filter[] }) => {
+    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Feats'))
+  },
   'usage': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
   },
@@ -219,6 +228,8 @@ const config: SearchDriverOptions = {
       spell_type: { type: "value", size: 30 },
       num_actions: { type: "value", size: 10 },
       requirements_flag: { type: "value", size: 2 },
+      feat_level: { type: "value", size: 250 },
+      prerequisites_flag: { type: "value", size: 2 },
       usage: { type: "value", size: 30 },
       bulk: { type: "value", size: 30 },
       item_level: { type: "value", size: 250 },
@@ -391,6 +402,18 @@ export default function App() {
                             <Facet
                                 field="requirements_flag"
                                 label="Has Requirements"
+                                isFilterable={false}
+                            />
+                            <Facet
+                                field="feat_level"
+                                label="Feat Level"
+                                isFilterable={false}
+                                view={FeatLevelFacet}
+                                show={10}
+                            />
+                            <Facet
+                                field="prerequisites_flag"
+                                label="Has Prerequisites"
                                 isFilterable={false}
                             />
                             <Facet

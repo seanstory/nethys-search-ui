@@ -477,6 +477,24 @@
       }
     },
     {
+      "grok": {
+        "field": "full_html",
+        "patterns": [
+          "<span style=\\\"margin-left:auto; margin-right:0\\\">Feat %{NUMBER:feat_level}"
+        ],
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "Extracts feat level from Feats pages"
+      }
+    },
+    {
+      "script": {
+        "source": "if (ctx['full_html'] != null && ctx['full_html'].contains('<b>Prerequisites</b>')) { ctx['prerequisites_flag'] = 'yes'; }",
+        "ignore_failure": true,
+        "description": "Sets prerequisites_flag when full_html contains a Prerequisites stat block label"
+      }
+    },
+    {
       "script": {
         "source": "if (ctx['body_content'] != null && ctx['body_content'].contains('Requirements')) { ctx['requirements_flag'] = 'yes'; }",
         "ignore_failure": true,
