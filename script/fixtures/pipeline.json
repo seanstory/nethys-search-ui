@@ -484,6 +484,13 @@
       }
     },
     {
+      "script": {
+        "source": "if (ctx['full_html'] != null) { def m = /class=\"trait(uncommon|rare|unique)\"/.matcher(ctx['full_html']); if (m.find()) { ctx['rarity'] = m.group(1).substring(0,1).toUpperCase() + m.group(1).substring(1); } }",
+        "ignore_failure": true,
+        "description": "Extracts rarity (Uncommon/Rare/Unique) from full_html trait span CSS classes; Common items have no rarity span"
+      }
+    },
+    {
       "remove": {
         "field": "traits",
         "if": "ctx['url'] != null && ctx['url'].contains('Classes.aspx')",

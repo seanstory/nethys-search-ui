@@ -202,6 +202,7 @@ const config: SearchDriverOptions = {
     facets: {
       category: { type: "value", size: 30 },
       sub_category: { type: "value", size: 30 },
+      rarity: { type: "value", size: 10 },
       traits: { type: "value", size: 30 },
       meta_keywords: { type: "value", size: 30 },
       traditions: { type: "value", size: 30 },
@@ -303,6 +304,11 @@ export default function App() {
                                 label="Sub-Category"
                                 isFilterable={true}
                                 view={AlphaFacet}
+                            />
+                            <Facet
+                                field="rarity"
+                                label="Rarity"
+                                isFilterable={false}
                             />
                             <Facet
                                 field="spell_type"
