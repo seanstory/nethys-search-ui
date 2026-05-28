@@ -209,10 +209,10 @@ const conditionalFacets = {
     return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
   },
   'creature_level': ({ filters }: { filters: Filter[] }) => {
-    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Monsters'))
+    return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Monsters') || filterHasCategory(filter, 'NPCs')))
   },
   'creature_size': ({ filters }: { filters: Filter[] }) => {
-    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Monsters'))
+    return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Monsters') || filterHasCategory(filter, 'NPCs')))
   },
 };
 
