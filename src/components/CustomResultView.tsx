@@ -50,9 +50,9 @@ export const CustomResultView = ({
                     <span className="sui-result__value" dangerouslySetInnerHTML={{__html: result.meta_description?.raw}}/>
                 </li>
                 {
-                    result.body_content?.snippet && result.body_content?.snippet.includes("<em>") &&
+                    result.body_content?.snippet &&
                     <li>
-                        <span className="sui-result__key">snippet</span>
+                        <span className="sui-result__key">{result.body_content?.snippet.includes("<em>") ? "snippet" : "preview"}</span>
                         <span className="sui-result__value" dangerouslySetInnerHTML={{__html: result.body_content?.snippet}}/>
                     </li>
                 }
