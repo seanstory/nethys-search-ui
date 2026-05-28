@@ -1656,6 +1656,296 @@
           "created_at": "2026-05-28T00:00:00Z",
           "id": "6849w0438b35f0f9ede6c0284",
           "url": "https://2e.aonprd.com/Weapons.aspx?ID=438"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d000b35f0f9ede6c3d00",
+          "url": "https://2e.aonprd.com/Monsters.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d001b35f0f9ede6c3d01",
+          "url": "https://2e.aonprd.com/NPCs.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d002b35f0f9ede6c3d02",
+          "url": "https://2e.aonprd.com/Weapons.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d003b35f0f9ede6c3d03",
+          "url": "https://2e.aonprd.com/Armor.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d004b35f0f9ede6c3d04",
+          "url": "https://2e.aonprd.com/Shields.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d005b35f0f9ede6c3d05",
+          "url": "https://2e.aonprd.com/Rituals.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d006b35f0f9ede6c3d06",
+          "url": "https://2e.aonprd.com/Vehicles.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d007b35f0f9ede6c3d07",
+          "url": "https://2e.aonprd.com/Relics.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d008b35f0f9ede6c3d08",
+          "url": "https://2e.aonprd.com/Sources.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d009b35f0f9ede6c3d09",
+          "url": "https://2e.aonprd.com/Languages.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d010b35f0f9ede6c3d0a",
+          "url": "https://2e.aonprd.com/Familiars.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d011b35f0f9ede6c3d0b",
+          "url": "https://2e.aonprd.com/Companions.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d012b35f0f9ede6c3d0c",
+          "url": "https://2e.aonprd.com/MonsterFamilies.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d013b35f0f9ede6c3d0d",
+          "url": "https://2e.aonprd.com/MonsterAbilities.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d014b35f0f9ede6c3d0e",
+          "url": "https://2e.aonprd.com/Bloodlines.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d015b35f0f9ede6c3d0f",
+          "url": "https://2e.aonprd.com/Eidolons.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d016b35f0f9ede6c3d10",
+          "url": "https://2e.aonprd.com/Mysteries.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d017b35f0f9ede6c3d11",
+          "url": "https://2e.aonprd.com/Patrons.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d018b35f0f9ede6c3d12",
+          "url": "https://2e.aonprd.com/Rackets.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d019b35f0f9ede6c3d13",
+          "url": "https://2e.aonprd.com/DruidicOrders.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d020b35f0f9ede6c3d14",
+          "url": "https://2e.aonprd.com/HybridStudies.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d021b35f0f9ede6c3d15",
+          "url": "https://2e.aonprd.com/HuntersEdge.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d022b35f0f9ede6c3d16",
+          "url": "https://2e.aonprd.com/Instincts.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d023b35f0f9ede6c3d17",
+          "url": "https://2e.aonprd.com/Implements.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d024b35f0f9ede6c3d18",
+          "url": "https://2e.aonprd.com/Innovations.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d025b35f0f9ede6c3d19",
+          "url": "https://2e.aonprd.com/Lessons.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d026b35f0f9ede6c3d1a",
+          "url": "https://2e.aonprd.com/Muses.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d027b35f0f9ede6c3d1b",
+          "url": "https://2e.aonprd.com/Styles.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d028b35f0f9ede6c3d1c",
+          "url": "https://2e.aonprd.com/Ways.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d029b35f0f9ede6c3d1d",
+          "url": "https://2e.aonprd.com/ArcaneSchools.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d030b35f0f9ede6c3d1e",
+          "url": "https://2e.aonprd.com/ArcaneThesis.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d031b35f0f9ede6c3d1f",
+          "url": "https://2e.aonprd.com/Causes.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d032b35f0f9ede6c3d20",
+          "url": "https://2e.aonprd.com/Doctrines.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d033b35f0f9ede6c3d21",
+          "url": "https://2e.aonprd.com/Methodologies.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d034b35f0f9ede6c3d22",
+          "url": "https://2e.aonprd.com/ResearchFields.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d035b35f0f9ede6c3d23",
+          "url": "https://2e.aonprd.com/WeaponGroups.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d036b35f0f9ede6c3d24",
+          "url": "https://2e.aonprd.com/ArmorGroups.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d037b35f0f9ede6c3d25",
+          "url": "https://2e.aonprd.com/SiegeWeapons.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d038b35f0f9ede6c3d26",
+          "url": "https://2e.aonprd.com/ItemCurses.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d039b35f0f9ede6c3d27",
+          "url": "https://2e.aonprd.com/SetRelics.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d040b35f0f9ede6c3d28",
+          "url": "https://2e.aonprd.com/Domains.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d041b35f0f9ede6c3d29",
+          "url": "https://2e.aonprd.com/Planes.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d042b35f0f9ede6c3d2a",
+          "url": "https://2e.aonprd.com/DeityCategories.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d043b35f0f9ede6c3d2b",
+          "url": "https://2e.aonprd.com/Articles.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d044b35f0f9ede6c3d2c",
+          "url": "https://2e.aonprd.com/Elements.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d045b35f0f9ede6c3d2d",
+          "url": "https://2e.aonprd.com/Curses.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d046b35f0f9ede6c3d2e",
+          "url": "https://2e.aonprd.com/Diseases.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d047b35f0f9ede6c3d2f",
+          "url": "https://2e.aonprd.com/WeatherHazards.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d048b35f0f9ede6c3d30",
+          "url": "https://2e.aonprd.com/Tactics.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d049b35f0f9ede6c3d31",
+          "url": "https://2e.aonprd.com/CampActivities.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d050b35f0f9ede6c3d32",
+          "url": "https://2e.aonprd.com/CampMeals.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d051b35f0f9ede6c3d33",
+          "url": "https://2e.aonprd.com/Tenets.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d052b35f0f9ede6c3d34",
+          "url": "https://2e.aonprd.com/NPCThemeTemplates.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d053b35f0f9ede6c3d35",
+          "url": "https://2e.aonprd.com/MonsterTemplates.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d054b35f0f9ede6c3d36",
+          "url": "https://2e.aonprd.com/KMEvents.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d055b35f0f9ede6c3d37",
+          "url": "https://2e.aonprd.com/KMStructures.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d056b35f0f9ede6c3d38",
+          "url": "https://2e.aonprd.com/KMWarArmies.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849d057b35f0f9ede6c3d39",
+          "url": "https://2e.aonprd.com/KMWarTactics.aspx"
         }
       ],
       "sitemaps": [],
