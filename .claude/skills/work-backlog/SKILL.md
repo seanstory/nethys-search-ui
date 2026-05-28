@@ -91,6 +91,14 @@ Keep a running summary in your responses as issues complete:
 |---|-------|--------|
 | N | Title | Done / Too complex: [reason] |
 
+## Crawl Coordination
+
+Crawls take hours and only one can run at a time. During a backlog session with multiple backend-affecting issues, do **not** let each subagent trigger its own crawl. Instead:
+
+- Tell subagents in their prompts: **skip crawl-triggering** — just deploy the backend config changes and note what needs re-crawling.
+- After all issues are processed, trigger a single full crawl at the end if any backend changes were made.
+- Exception: if only one issue in the session needs a crawl and it's the last one, you can let its subagent trigger it — but check for an active crawl first.
+
 ## When to Stop
 
 - All issues have been triaged → report the full summary

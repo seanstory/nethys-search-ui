@@ -80,11 +80,21 @@ script/update-curations.sh         # Push curation changes (run after crawl)
 
 ## 5. Test with a targeted crawl
 
-Trigger a **partial crawl** with custom seed URLs targeting only the affected pages. This re-indexes just those pages through the updated pipeline without running a full crawl (~57K pages).
+**Before triggering any crawl, check if one is already running:**
 
 ```bash
 source script/common.sh
 KIBANA_HOST=$(get_kibana_host)
+curl -s -H "Authorization: ApiKey $ES_API_KEY" -H "kbn-xsrf: true" \
+  "${KIBANA_HOST}/internal/enterprise_search/indices/search-nethys/crawler/crawl_requests/active" \
+  | jq '{id, status}'
+```
+
+If an active crawl exists, **do not trigger another one**. Only one crawl can run at a time, and crawls take hours. Note that a crawl is running and skip to step 6 (verify using documents already in the index, or defer verification).
+
+If no active crawl, trigger a **partial crawl** with custom seed URLs targeting only the affected pages. This re-indexes just those pages through the updated pipeline without running a full crawl (~57K pages).
+
+```bash
 curl -s -H "Authorization: ApiKey $ES_API_KEY" \
   -H "kbn-xsrf: true" -H "Content-Type: application/json" \
   "${KIBANA_HOST}/internal/enterprise_search/indices/search-nethys/crawler/crawl_requests" \
