@@ -116,6 +116,121 @@
           "created_at": "2023-03-21T14:57:39Z",
           "id": "6419c5e3b35f0f9ede6c2b59",
           "url": "https://2e.aonprd.com/Rules.aspx?ID=686"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c001b35f0f9ede6c2c01",
+          "url": "https://2e.aonprd.com/Spells.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c002b35f0f9ede6c2c02",
+          "url": "https://2e.aonprd.com/Deities.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c003b35f0f9ede6c2c03",
+          "url": "https://2e.aonprd.com/Setting.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c004b35f0f9ede6c2c04",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c005b35f0f9ede6c2c05",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=1"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c006b35f0f9ede6c2c06",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=2"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c007b35f0f9ede6c2c07",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=3"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c008b35f0f9ede6c2c08",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=4"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c009b35f0f9ede6c2c09",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=5"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c010b35f0f9ede6c2c10",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=6"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c011b35f0f9ede6c2c11",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=7"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c012b35f0f9ede6c2c12",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=8"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c013b35f0f9ede6c2c13",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=9"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c014b35f0f9ede6c2c14",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=10"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c015b35f0f9ede6c2c15",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=11"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c016b35f0f9ede6c2c16",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=13"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c017b35f0f9ede6c2c17",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=14"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c018b35f0f9ede6c2c18",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=15"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c019b35f0f9ede6c2c19",
+          "url": "https://2e.aonprd.com/MythicCallings.aspx?ID=16"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c020b35f0f9ede6c2c20",
+          "url": "https://2e.aonprd.com/MythicDestinies.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c021b35f0f9ede6c2c21",
+          "url": "https://2e.aonprd.com/MythicFeats.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c022b35f0f9ede6c2c22",
+          "url": "https://2e.aonprd.com/MythicSpells.aspx"
+        },
+        {
+          "created_at": "2026-05-28T00:00:00Z",
+          "id": "6849c023b35f0f9ede6c2c23",
+          "url": "https://2e.aonprd.com/MythicRituals.aspx"
         }
       ],
       "sitemaps": [],
