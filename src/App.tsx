@@ -186,7 +186,7 @@ const CONDITIONAL_FACET_FIELDS = [
   'spell_level_bucket',
   'spell_type',
   'num_actions',
-  'requirements_flag',
+  'requirements',
   'feat_level_bucket',
   'prerequisites_flag',
   'usage',
@@ -246,9 +246,6 @@ const conditionalFacets = {
   'num_actions': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Actions') || filterHasCategory(filter, 'Spells')))
   },
-  'requirements_flag': ({ filters }: { filters: Filter[] }) => {
-    return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Actions'))
-  },
   'feat_level_bucket': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Feats'))
   },
@@ -305,7 +302,6 @@ const config: SearchDriverOptions = {
       spell_level_bucket: { type: "value", size: 15 },
       spell_type: { type: "value", size: 30 },
       num_actions: { type: "value", size: 10 },
-      requirements_flag: { type: "value", size: 2 },
       feat_level_bucket: { type: "value", size: 15 },
       prerequisites_flag: { type: "value", size: 2 },
       usage: { type: "value", size: 30 },
@@ -533,11 +529,6 @@ export default function App() {
                                 label="Number of Actions"
                                 isFilterable={false}
                                 view={NumActionsFacet}
-                            />
-                            <Facet
-                                field="requirements_flag"
-                                label="Has Requirements"
-                                isFilterable={false}
                             />
                             <Facet
                                 field="feat_level_bucket"
