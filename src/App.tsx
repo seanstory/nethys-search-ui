@@ -81,11 +81,20 @@ const numericSort = (a: string, b: string) => Number(a) - Number(b);
 const CREATURE_SIZE_ORDER = ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"];
 function creatureSizeOrder(v: string) { const i = CREATURE_SIZE_ORDER.indexOf(v); return i === -1 ? CREATURE_SIZE_ORDER.length : i; }
 
+// Extracts the leading integer (possibly negative) from a bucket label such as
+// "Level 5", "Levels 1–2", "Levels 9–12", "Level -1 to 0", "Level 21+".
+// Bucket labels are always sorted by this first number so that they appear in
+// natural level-ascending order regardless of the en-dash separator used.
+function levelBucketOrder(v: string): number {
+  const m = v.match(/-?\d+/);
+  return m ? parseInt(m[0], 10) : 9999;
+}
+
 const AlphaFacet = sortedFacetView((a, b) => a.localeCompare(b));
-const SpellLevelFacet = sortedFacetView(numericSort);
-const FeatLevelFacet = sortedFacetView(numericSort);
-const ItemLevelFacet = sortedFacetView(numericSort);
-const CreatureLevelFacet = sortedFacetView(numericSort);
+const SpellLevelBucketFacet = sortedFacetView((a, b) => levelBucketOrder(a) - levelBucketOrder(b));
+const FeatLevelBucketFacet = sortedFacetView((a, b) => levelBucketOrder(a) - levelBucketOrder(b));
+const ItemLevelBucketFacet = sortedFacetView((a, b) => levelBucketOrder(a) - levelBucketOrder(b));
+const CreatureLevelBucketFacet = sortedFacetView((a, b) => levelBucketOrder(a) - levelBucketOrder(b));
 const CreatureSizeFacet = sortedFacetView((a, b) => creatureSizeOrder(a) - creatureSizeOrder(b));
 const HardnessFacet = sortedFacetView(numericSort);
 const DurabilityFacet = sortedFacetView(numericSort);
@@ -118,19 +127,19 @@ const CONDITIONAL_FACET_FIELDS = [
   'save',
   'deities',
   'duration',
-  'spell_level',
+  'spell_level_bucket',
   'spell_type',
   'num_actions',
   'requirements_flag',
-  'feat_level',
+  'feat_level_bucket',
   'prerequisites_flag',
   'usage',
   'bulk',
-  'item_level',
+  'item_level_bucket',
   'hardness',
   'durability',
   'break_threshold',
-  'creature_level',
+  'creature_level_bucket',
   'creature_size',
 ] as const;
 
@@ -172,7 +181,7 @@ const conditionalFacets = {
   'duration': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
   },
-  'spell_level': ({ filters }: { filters: Filter[] }) => {
+  'spell_level_bucket': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Spells'))
   },
   'spell_type': ({ filters }: { filters: Filter[] }) => {
@@ -184,7 +193,7 @@ const conditionalFacets = {
   'requirements_flag': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Actions'))
   },
-  'feat_level': ({ filters }: { filters: Filter[] }) => {
+  'feat_level_bucket': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && filterHasCategory(filter, 'Feats'))
   },
   'prerequisites_flag': ({ filters }: { filters: Filter[] }) => {
@@ -196,7 +205,7 @@ const conditionalFacets = {
   'bulk': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
   },
-  'item_level': ({ filters }: { filters: Filter[] }) => {
+  'item_level_bucket': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
   },
   'hardness': ({ filters }: { filters: Filter[] }) => {
@@ -208,7 +217,7 @@ const conditionalFacets = {
   'break_threshold': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Equipment') || filterHasCategory(filter, 'Shields')))
   },
-  'creature_level': ({ filters }: { filters: Filter[] }) => {
+  'creature_level_bucket': ({ filters }: { filters: Filter[] }) => {
     return filters.some(filter => filter.field === 'category' && (filterHasCategory(filter, 'Monsters') || filterHasCategory(filter, 'NPCs')))
   },
   'creature_size': ({ filters }: { filters: Filter[] }) => {
@@ -237,19 +246,19 @@ const config: SearchDriverOptions = {
       save: { type: "value", size: 30 },
       deities: { type: "value", size: 250 },
       duration : { type: "value", size: 30 },
-      spell_level: { type: "value", size: 250 },
+      spell_level_bucket: { type: "value", size: 15 },
       spell_type: { type: "value", size: 30 },
       num_actions: { type: "value", size: 10 },
       requirements_flag: { type: "value", size: 2 },
-      feat_level: { type: "value", size: 250 },
+      feat_level_bucket: { type: "value", size: 15 },
       prerequisites_flag: { type: "value", size: 2 },
       usage: { type: "value", size: 30 },
       bulk: { type: "value", size: 30 },
-      item_level: { type: "value", size: 250 },
+      item_level_bucket: { type: "value", size: 15 },
       hardness: { type: "value", size: 250 },
       durability: { type: "value", size: 250 },
       break_threshold: { type: "value", size: 250 },
-      creature_level: { type: "value", size: 250 },
+      creature_level_bucket: { type: "value", size: 10 },
       creature_size: { type: "value", size: 10 },
     },
     disjunctiveFacets: ["meta_keywords", "traditions"],
@@ -390,10 +399,10 @@ export default function App() {
                                 isFilterable={true}
                             />
                             <Facet
-                                field="spell_level"
+                                field="spell_level_bucket"
                                 label="Spell Level"
-                                isFilterable={true}
-                                view={SpellLevelFacet}
+                                isFilterable={false}
+                                view={SpellLevelBucketFacet}
                                 show={10}
                             />
                             <Facet
@@ -455,10 +464,10 @@ export default function App() {
                                 isFilterable={false}
                             />
                             <Facet
-                                field="feat_level"
+                                field="feat_level_bucket"
                                 label="Feat Level"
                                 isFilterable={false}
-                                view={FeatLevelFacet}
+                                view={FeatLevelBucketFacet}
                                 show={10}
                             />
                             <Facet
@@ -479,11 +488,11 @@ export default function App() {
                                 view={BulkFacet}
                             />
                             <Facet
-                                field="item_level"
+                                field="item_level_bucket"
                                 label="Item Level"
                                 isFilterable={false}
-                                view={ItemLevelFacet}
-                                show={10}
+                                view={ItemLevelBucketFacet}
+                                show={12}
                             />
                             <Facet
                                 field="hardness"
@@ -507,11 +516,11 @@ export default function App() {
                                 show={10}
                             />
                             <Facet
-                                field="creature_level"
+                                field="creature_level_bucket"
                                 label="Creature Level"
                                 isFilterable={false}
-                                view={CreatureLevelFacet}
-                                show={10}
+                                view={CreatureLevelBucketFacet}
+                                show={7}
                             />
                             <Facet
                                 field="creature_size"

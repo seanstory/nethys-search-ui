@@ -538,6 +538,34 @@
       }
     },
     {
+      "script": {
+        "description": "Compute spell_level_bucket: single-level buckets Level 1 through Level 10",
+        "source": "if (ctx['spell_level'] != null) {\n  try {\n    int lvl = Integer.parseInt(ctx['spell_level'].trim());\n    if (lvl >= 1 && lvl <= 10) {\n      ctx['spell_level_bucket'] = 'Level ' + lvl;\n    }\n  } catch (Exception e) {}\n}",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "description": "Compute feat_level_bucket: every-2-level ranges Levels 1-2 through Levels 19-20",
+        "source": "if (ctx['feat_level'] != null) {\n  try {\n    int lvl = Integer.parseInt(ctx['feat_level'].trim());\n    if (lvl >= 1 && lvl <= 20) {\n      int lo = ((lvl - 1) / 2) * 2 + 1;\n      int hi = lo + 1;\n      ctx['feat_level_bucket'] = 'Levels ' + lo + '–' + hi;\n    }\n  } catch (Exception e) {}\n}",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "description": "Compute item_level_bucket: Level 0 alone, Levels 1-2 through 19-20, Level 21+",
+        "source": "if (ctx['item_level'] != null) {\n  try {\n    int lvl = Integer.parseInt(ctx['item_level'].trim());\n    if (lvl == 0) {\n      ctx['item_level_bucket'] = 'Level 0';\n    } else if (lvl >= 1 && lvl <= 20) {\n      int lo = ((lvl - 1) / 2) * 2 + 1;\n      int hi = lo + 1;\n      ctx['item_level_bucket'] = 'Levels ' + lo + '–' + hi;\n    } else if (lvl >= 21) {\n      ctx['item_level_bucket'] = 'Level 21+';\n    }\n  } catch (Exception e) {}\n}",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "description": "Compute creature_level_bucket: Level -1 to 0, Levels 1-4, 5-8, 9-12, 13-16, 17-21, Level 22+",
+        "source": "if (ctx['creature_level'] != null) {\n  try {\n    int lvl = Integer.parseInt(ctx['creature_level'].trim());\n    if (lvl <= 0) {\n      ctx['creature_level_bucket'] = 'Level -1 to 0';\n    } else if (lvl <= 4) {\n      ctx['creature_level_bucket'] = 'Levels 1–4';\n    } else if (lvl <= 8) {\n      ctx['creature_level_bucket'] = 'Levels 5–8';\n    } else if (lvl <= 12) {\n      ctx['creature_level_bucket'] = 'Levels 9–12';\n    } else if (lvl <= 16) {\n      ctx['creature_level_bucket'] = 'Levels 13–16';\n    } else if (lvl <= 21) {\n      ctx['creature_level_bucket'] = 'Levels 17–21';\n    } else {\n      ctx['creature_level_bucket'] = 'Level 22+';\n    }\n  } catch (Exception e) {}\n}",
+        "ignore_failure": true
+      }
+    },
+    {
       "remove": {
         "field": "traits",
         "if": "ctx['url'] != null && ctx['url'].contains('Classes.aspx')",
