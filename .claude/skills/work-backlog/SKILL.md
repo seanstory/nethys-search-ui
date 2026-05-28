@@ -47,10 +47,10 @@ Self-contained means:
 
 ## Step 3: Act
 - If self-contained: use the Skill tool with skill="work-github-issue" and args="N"
-- If too complex: report back with a clear explanation
+- If too complex: report back with a clear explanation. Leave a comment (attributed to claude) on the issue explaining the decision.
 
 ## Constraints
-- Stay on `main` branch
+- Start on main, and be sure to pull latest
 - Use work-github-issue skill (via Skill tool) for implementation
 ```
 
@@ -65,11 +65,9 @@ Wait for the subagent to complete before spawning the next one.
 - Field already indexed — just needs surfacing in the UI
 
 **Likely too complex:**
-- Requires visiting a live site to understand HTML structure
-- Multi-currency or ambiguous data (e.g., price with gp/sp/cp)
 - Architectural migration (connector swap, index type change)
 - Blocked by another unfinished issue
-- Requires a design decision the user hasn't made
+- Requires a design decision the user hasn't made (comment on the issue, as claude, with what extra context is necessary)
 
 ## What to Do with Complex Issues
 
@@ -77,7 +75,6 @@ Report back to the user with:
 - **Why** it's not self-contained (one specific blocker)
 - **What would unblock it** (a design decision, a research step, a prerequisite issue)
 
-Do not comment on the GitHub issue. Just report back and move on.
 
 ## Dirty Git State
 

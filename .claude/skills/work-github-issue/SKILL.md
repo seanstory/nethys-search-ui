@@ -140,6 +140,8 @@ curl -s -H "Authorization: Bearer $ENT_SEARCH_PRIVATE_KEY" \
   }' | jq '.results[] | {title: .title.raw, <field>: .<field>.raw}'
 ```
 
+Don't hesitate to also use the Chrome tools to browse to the deployed site and take screenshots to validate the fix looks like it should.
+
 ### 6c. Verify no regressions
 
 Also crawl and check a page of a **different** category to confirm the fix didn't break anything for documents that should not be affected.
@@ -181,7 +183,12 @@ After crawling, run the same ES query from step 6a to confirm zero documents rem
 
 ## 8. Commit, push, deploy, and close
 
+It's easiest to track changes for an issue if they're bundled in a PR. So when ready to commit, check out a new branch
+
 - Commit the fixture/code change with a message referencing the issue (`Fixes #N`).
-- Push to `main`.
+- Push to the branch.
+- Create a PR (be sure the PR links to the github issue you're working on)
+- merge the PR
 - If `src/` changed, deploy the frontend: `npm run deploy` (builds and pushes to the `gh-pages` branch). Backend-only fixes (pipeline, crawl rules, extraction rules, engine settings) don't need this.
 - The issue can be closed.
+
