@@ -126,7 +126,7 @@
       "grok": {
         "field": "full_html",
         "patterns": [
-          "<h1 class=\"title\"><a href=\"[A-Za-z]+\\.aspx\\?ID=%{NUMBER}[^\"]*\">%{DATA:better_title}</a>"
+          "<h1 class=\"title\">%{DATA}<a href=\"[A-Za-z]+\\.aspx\\?ID=%{NUMBER}[^\"]*\">%{DATA:better_title}</a>"
         ],
         "if": "ctx['better_title'] == null || ctx['better_title'] == ''",
         "ignore_missing": true,
