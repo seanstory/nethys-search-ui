@@ -1,5 +1,23 @@
 import {SearchResult} from "@elastic/search-ui";
 
+/**
+ * Formats a price_gp value (gold pieces as a float) into a human-readable
+ * currency string. Handles gp, sp, and cp denominations.
+ * Examples: 6.0 → "6 gp", 0.1 → "1 sp", 1.5 → "1 gp 5 sp", 0.01 → "1 cp"
+ */
+function formatPriceGp(priceGp: number): string {
+    // Work in copper to avoid floating-point precision issues
+    const totalCp = Math.round(priceGp * 100);
+    const gp = Math.floor(totalCp / 100);
+    const sp = Math.floor((totalCp % 100) / 10);
+    const cp = totalCp % 10;
+    const parts: string[] = [];
+    if (gp > 0) parts.push(`${gp} gp`);
+    if (sp > 0) parts.push(`${sp} sp`);
+    if (cp > 0) parts.push(`${cp} cp`);
+    return parts.length > 0 ? parts.join(" ") : `${priceGp} gp`;
+}
+
 const ACTION_COST_ICONS: Record<string, string> = {
     "free-action": "◇",
     "reaction": "↺",
@@ -40,6 +58,12 @@ export const CustomResultView = ({
     const itemLevel: string | undefined = isEquipment ? result.item_level?.raw : undefined;
     const bulk: string | undefined = isEquipment ? result.bulk?.raw : undefined;
     const usage: string | undefined = isEquipment ? result.usage?.raw : undefined;
+    const priceGpRaw: number | undefined = isEquipment && result.price_gp?.raw != null
+        ? Number(result.price_gp.raw)
+        : undefined;
+    const priceDisplay: string | undefined = priceGpRaw != null && !isNaN(priceGpRaw)
+        ? formatPriceGp(priceGpRaw)
+        : undefined;
     const spellLevel: string | undefined = isSpell ? result.spell_level?.raw : undefined;
     const traditions: string[] = isSpell && result.traditions?.raw
         ? (Array.isArray(result.traditions.raw) ? result.traditions.raw : [result.traditions.raw])
@@ -86,8 +110,23 @@ export const CustomResultView = ({
                     Spell {spellLevel}
                 </span>
             )}
-            {isEquipment && (itemLevel || bulk || usage) && (
+            {isEquipment && (itemLevel || bulk || usage || priceDisplay) && (
                 <span style={{ marginLeft: "0.5rem", display: "inline-flex", gap: "0.35rem", flexWrap: "wrap", flexShrink: 0 }}>
+                    {priceDisplay && (
+                        <span
+                            title="Price"
+                            style={{
+                                fontSize: "0.75rem",
+                                background: "#7a5c00",
+                                color: "#fff",
+                                padding: "1px 6px",
+                                borderRadius: "3px",
+                                whiteSpace: "nowrap",
+                            }}
+                        >
+                            {priceDisplay}
+                        </span>
+                    )}
                     {itemLevel && (
                         <span
                             title="Item Level"

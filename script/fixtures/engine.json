@@ -141,6 +141,9 @@
           },
           "deities": {
             "raw": {}
+          },
+          "price_gp": {
+            "raw": {}
           }
         },
         "search_fields": {
