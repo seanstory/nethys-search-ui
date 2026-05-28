@@ -150,9 +150,19 @@ curl -s -H "Authorization: Bearer $ENT_SEARCH_PRIVATE_KEY" \
   }' | jq '.results[] | {title: .title.raw, <field>: .<field>.raw}'
 ```
 
-Don't hesitate to also use the Chrome tools to browse to the deployed site and take screenshots to validate the fix looks like it should.
+### 6c. Verify visually in the browser (required for any frontend change)
 
-### 6c. Verify no regressions
+If the fix touches `src/` (UI changes, new badges, facets, result cards), you **must** open the deployed site and visually confirm it looks correct. Use the Chrome MCP tools:
+
+1. Load the tool: use ToolSearch with query `select:mcp__claude-in-chrome__tabs_context_mcp`
+2. Get current tabs: call `mcp__claude-in-chrome__tabs_context_mcp`
+3. Load navigate tool: use ToolSearch with query `select:mcp__claude-in-chrome__navigate`
+4. Navigate to the deployed site: `https://seanstory.github.io/nethys-search-ui/`
+5. Load screenshot tool: use ToolSearch with query `select:mcp__claude-in-chrome__computer`
+6. Take a screenshot and inspect that the change renders as expected
+7. Exercise the affected feature (apply the relevant filter, search for a relevant term) and take another screenshot confirming the result
+
+### 6d. Verify no regressions
 
 Also crawl and check a page of a **different** category to confirm the fix didn't break anything for documents that should not be affected.
 
