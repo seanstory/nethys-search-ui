@@ -305,14 +305,15 @@ export default function App() {
   return (
       <SearchProvider config={config}>
         <WithSearch
-            mapContextToProps={({ wasSearched, results, filters, removeFilter }) => ({
+            mapContextToProps={({ wasSearched, results, filters, removeFilter, clearFilters }) => ({
               wasSearched,
               results,
               filters,
               removeFilter,
+              clearFilters,
             })}
         >
-          {({ wasSearched, results, filters, removeFilter }) => {
+          {({ wasSearched, results, filters, removeFilter, clearFilters }) => {
             return (
                 <div className="App">
                   <CategoryFilterGuard filters={filters} removeFilter={removeFilter} />
@@ -321,6 +322,26 @@ export default function App() {
                         header={<SearchBox debounceLength={0} searchAsYouType={true} />}
                         sideContent={
                           <div>
+                            {filters.length > 0 && (
+                              <button
+                                onClick={() => clearFilters()}
+                                style={{
+                                  display: "block",
+                                  width: "100%",
+                                  marginBottom: "1rem",
+                                  padding: "0.5rem 1rem",
+                                  background: "#c0392b",
+                                  color: "#fff",
+                                  border: "none",
+                                  borderRadius: "4px",
+                                  cursor: "pointer",
+                                  fontSize: "0.9rem",
+                                  fontWeight: "bold",
+                                }}
+                              >
+                                Clear all filters
+                              </button>
+                            )}
                             <Facet
                                 field="category"
                                 label="Category"
