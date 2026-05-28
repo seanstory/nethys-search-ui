@@ -23,13 +23,68 @@ import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import { SearchDriverOptions, Filter } from "@elastic/search-ui";
 import {CustomResultView} from "./components/CustomResultView";
 
-function sortedFacetView(comparator: (a: string, b: string) => number) {
+// Default number of options shown before the facet is collapsed.
+const DEFAULT_FACET_SHOW = 10;
+
+// Returns a facet view that sorts options and supports show-more / show-less
+// collapse behaviour managed locally in the view (not by the Facet container).
+//
+// initialShow: how many options to show when collapsed (default 10).
+// comparator:  sort comparator; pass null for no sorting (alpha by default via
+//              whatever order the API returns).
+function sortedFacetView(
+  comparator: ((a: string, b: string) => number) | null,
+  initialShow: number = DEFAULT_FACET_SHOW
+) {
   return function SortedFacet(props: FacetViewProps) {
-    const sorted = [...props.options].sort((a, b) =>
-      comparator(String(a.value), String(b.value))
+    const [expanded, setExpanded] = React.useState(false);
+
+    const sorted = comparator
+      ? [...props.options].sort((a, b) =>
+          comparator(String(a.value), String(b.value))
+        )
+      : props.options;
+
+    const visible = expanded ? sorted : sorted.slice(0, initialShow);
+    const hasMore = sorted.length > initialShow;
+
+    return (
+      <>
+        <MultiCheckboxFacet
+          {...props}
+          options={visible}
+          // Suppress the built-in "+ More" button; we render our own below.
+          showMore={false}
+          onMoreClick={() => {}}
+        />
+        {hasMore && !expanded && (
+          <button
+            type="button"
+            className="sui-facet-view-more"
+            onClick={() => setExpanded(true)}
+            aria-label="Show more options"
+          >
+            + More ({sorted.length - initialShow} more)
+          </button>
+        )}
+        {hasMore && expanded && (
+          <button
+            type="button"
+            className="sui-facet-view-more"
+            onClick={() => setExpanded(false)}
+            aria-label="Show fewer options"
+          >
+            - Show less
+          </button>
+        )}
+      </>
     );
-    return <MultiCheckboxFacet {...props} options={sorted} />;
   };
+}
+
+// Unsorted collapsible facet view (uses API return order).
+function collapsibleFacetView(initialShow: number = DEFAULT_FACET_SHOW) {
+  return sortedFacetView(null, initialShow);
 }
 
 const DURATION_ORDER: string[] = [
@@ -93,7 +148,7 @@ function levelBucketOrder(v: string): number {
 const AlphaFacet = sortedFacetView((a, b) => a.localeCompare(b));
 const SpellLevelBucketFacet = sortedFacetView((a, b) => levelBucketOrder(a) - levelBucketOrder(b));
 const FeatLevelBucketFacet = sortedFacetView((a, b) => levelBucketOrder(a) - levelBucketOrder(b));
-const ItemLevelBucketFacet = sortedFacetView((a, b) => levelBucketOrder(a) - levelBucketOrder(b));
+const ItemLevelBucketFacet = sortedFacetView((a, b) => levelBucketOrder(a) - levelBucketOrder(b), 12);
 const CreatureLevelBucketFacet = sortedFacetView((a, b) => levelBucketOrder(a) - levelBucketOrder(b));
 const CreatureSizeFacet = sortedFacetView((a, b) => creatureSizeOrder(a) - creatureSizeOrder(b));
 const HardnessFacet = sortedFacetView(numericSort);
@@ -102,6 +157,7 @@ const BreakThresholdFacet = sortedFacetView(numericSort);
 const NumActionsFacet = sortedFacetView((a, b) => numActionsOrder(a) - numActionsOrder(b));
 const BulkFacet = sortedFacetView((a, b) => bulkOrder(a) - bulkOrder(b));
 const DurationFacet = sortedFacetView((a, b) => durationOrder(a) - durationOrder(b));
+const CollapsibleFacet = collapsibleFacetView();
 
 const connector = new AppSearchAPIConnector({
   searchKey: "search-he399pdnh3tms9u3nhwecppr",
@@ -375,6 +431,7 @@ export default function App() {
                                 label="Sub-Category"
                                 isFilterable={true}
                                 view={AlphaFacet}
+                                show={250}
                             />
                             <Facet
                                 field="rarity"
@@ -386,7 +443,7 @@ export default function App() {
                                 label="Source Book"
                                 isFilterable={true}
                                 view={AlphaFacet}
-                                show={10}
+                                show={250}
                             />
                             <Facet
                                 field="spell_type"
@@ -397,25 +454,29 @@ export default function App() {
                                 field="traditions"
                                 label="Traditions"
                                 isFilterable={true}
+                                view={CollapsibleFacet}
+                                show={250}
                             />
                             <Facet
                                 field="spell_level_bucket"
                                 label="Spell Level"
                                 isFilterable={false}
                                 view={SpellLevelBucketFacet}
-                                show={10}
+                                show={250}
                             />
                             <Facet
                                 field="bloodlines"
                                 label="Bloodlines"
                                 isFilterable={true}
-                                show={10}
+                                view={CollapsibleFacet}
+                                show={250}
                             />
                             <Facet
                                 field="deities"
                                 label="Deity"
                                 isFilterable={true}
-                                show={10}
+                                view={CollapsibleFacet}
+                                show={250}
                             />
                             <Facet
                                 field="casting_components"
@@ -431,26 +492,29 @@ export default function App() {
                                 field="range"
                                 label="Range"
                                 isFilterable={true}
-                                show={10}
+                                view={CollapsibleFacet}
+                                show={250}
                             />
                             <Facet
                                 field="area"
                                 label="Area"
                                 isFilterable={true}
-                                show={10}
+                                view={CollapsibleFacet}
+                                show={250}
                             />
                             <Facet
                                 field="target"
                                 label="Target"
                                 isFilterable={true}
-                                show={10}
+                                view={CollapsibleFacet}
+                                show={250}
                             />
                             <Facet
                                 field="duration"
                                 label="Duration"
                                 isFilterable={true}
                                 view={DurationFacet}
-                                show={10}
+                                show={250}
                             />
                             <Facet
                                 field="num_actions"
@@ -468,7 +532,7 @@ export default function App() {
                                 label="Feat Level"
                                 isFilterable={false}
                                 view={FeatLevelBucketFacet}
-                                show={10}
+                                show={250}
                             />
                             <Facet
                                 field="prerequisites_flag"
@@ -479,7 +543,8 @@ export default function App() {
                                 field="usage"
                                 label="Usage"
                                 isFilterable={true}
-                                show={10}
+                                view={CollapsibleFacet}
+                                show={250}
                             />
                             <Facet
                                 field="bulk"
@@ -492,35 +557,35 @@ export default function App() {
                                 label="Item Level"
                                 isFilterable={false}
                                 view={ItemLevelBucketFacet}
-                                show={12}
+                                show={250}
                             />
                             <Facet
                                 field="hardness"
                                 label="Hardness"
                                 isFilterable={false}
                                 view={HardnessFacet}
-                                show={10}
+                                show={250}
                             />
                             <Facet
                                 field="durability"
                                 label="Durability (HP)"
                                 isFilterable={false}
                                 view={DurabilityFacet}
-                                show={10}
+                                show={250}
                             />
                             <Facet
                                 field="break_threshold"
                                 label="Break Threshold"
                                 isFilterable={false}
                                 view={BreakThresholdFacet}
-                                show={10}
+                                show={250}
                             />
                             <Facet
                                 field="creature_level_bucket"
                                 label="Creature Level"
                                 isFilterable={false}
                                 view={CreatureLevelBucketFacet}
-                                show={7}
+                                show={250}
                             />
                             <Facet
                                 field="creature_size"
@@ -532,14 +597,16 @@ export default function App() {
                                 field="traits"
                                 label="Traits"
                                 isFilterable={true}
-                                show={10}
+                                view={CollapsibleFacet}
+                                show={250}
                             />
                             <Facet
                                 field="meta_keywords"
                                 label="Keywords"
                                 filterType="any"
                                 isFilterable={true}
-                                show={10}
+                                view={CollapsibleFacet}
+                                show={250}
                             />
                           </div>
                         }
