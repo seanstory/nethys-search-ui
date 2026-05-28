@@ -194,11 +194,12 @@ export default function App() {
   return (
       <SearchProvider config={config}>
         <WithSearch
-            mapContextToProps={({ wasSearched }) => ({
-              wasSearched
+            mapContextToProps={({ wasSearched, results }) => ({
+              wasSearched,
+              results
             })}
         >
-          {({ wasSearched }) => {
+          {({ wasSearched, results }) => {
             return (
                 <div className="App">
                   <ErrorBoundary>
@@ -334,13 +335,22 @@ export default function App() {
                           </div>
                         }
                         bodyContent={
-                          <Results
-                              resultView={CustomResultView}
-                              titleField="title"
-                              urlField="url"
-                              thumbnailField="thumbnail_url"
-                              shouldTrackClickThrough
-                          />
+                          wasSearched && results.length === 0
+                            ? (
+                              <div style={{ padding: "2rem", textAlign: "center", color: "#666" }}>
+                                <p style={{ fontSize: "1.2rem", marginBottom: "0.5rem" }}>No results found.</p>
+                                <p style={{ fontSize: "0.95rem" }}>Try adjusting your search terms or filters.</p>
+                              </div>
+                            )
+                            : (
+                              <Results
+                                  resultView={CustomResultView}
+                                  titleField="title"
+                                  urlField="url"
+                                  thumbnailField="thumbnail_url"
+                                  shouldTrackClickThrough
+                              />
+                            )
                         }
                         bodyHeader={
                           <React.Fragment>
