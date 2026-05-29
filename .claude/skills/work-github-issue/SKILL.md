@@ -18,6 +18,7 @@ Read the relevant gotcha file **before** starting work in that area. Paths are r
 | Matching against `full_html`          | `gotchas/crawler-html-normalization.md` |
 | Adding a new facet field              | `gotchas/app-search-facets.md`         |
 | Running a batch crawl (100+ pages)    | `gotchas/batch-crawl-timing.md`        |
+| Pages being fetched but not indexed   | `gotchas/content-hash-constraints.md`  |
 
 ## 1. Understand the issue
 
