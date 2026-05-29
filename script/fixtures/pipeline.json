@@ -525,9 +525,9 @@
     },
     {
       "script": {
-        "source": "if (ctx['body_content'] != null && ctx['body_content'].contains('Requirements')) { ctx['requirements_flag'] = 'yes'; }",
+        "source": "if (ctx['full_html'] != null) { def m = /<b>Requirements<\\/b>([\\s\\S]*?)<hr/.matcher(ctx['full_html']); if (m.find()) { ctx['requirements'] = m.group(1).replaceAll('<[^>]+>', '').trim(); } }",
         "ignore_failure": true,
-        "description": "Sets requirements_flag when body_content mentions Requirements"
+        "description": "Extracts requirements text from <b>Requirements</b>...<hr stat block pattern in full_html"
       }
     },
     {
@@ -570,6 +570,24 @@
         "description": "Compute creature_level_bucket: Level -1 to 0, Levels 1-4, 5-8, 9-12, 13-16, 17-21, Level 22+",
         "source": "if (ctx['creature_level'] != null) {\n  try {\n    int lvl = Integer.parseInt(ctx['creature_level'].trim());\n    if (lvl <= 0) {\n      ctx['creature_level_bucket'] = 'Level -1 to 0';\n    } else if (lvl <= 4) {\n      ctx['creature_level_bucket'] = 'Levels 1–4';\n    } else if (lvl <= 8) {\n      ctx['creature_level_bucket'] = 'Levels 5–8';\n    } else if (lvl <= 12) {\n      ctx['creature_level_bucket'] = 'Levels 9–12';\n    } else if (lvl <= 16) {\n      ctx['creature_level_bucket'] = 'Levels 13–16';\n    } else if (lvl <= 21) {\n      ctx['creature_level_bucket'] = 'Levels 17–21';\n    } else {\n      ctx['creature_level_bucket'] = 'Level 22+';\n    }\n  } catch (Exception e) {}\n}",
         "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "requirements",
+        "if": "ctx['url'] == null || !ctx['url'].contains('Actions.aspx')",
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "requirements field is only valid on Actions pages; class/feat pages embed action stat blocks which would otherwise cause false positives"
+      }
+    },
+    {
+      "remove": {
+        "field": "prerequisites_flag",
+        "if": "ctx['url'] == null || (!ctx['url'].contains('Feats.aspx') && !ctx['url'].contains('MythicFeats.aspx'))",
+        "ignore_missing": true,
+        "ignore_failure": true,
+        "description": "prerequisites_flag is only valid on Feats/MythicFeats pages"
       }
     },
     {
