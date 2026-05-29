@@ -200,6 +200,7 @@
       "html_strip": {
         "field": "full_html",
         "target_field": "stripped_html",
+        "if": "ctx['url'] != null && (ctx['url'].contains('Spells.aspx') || ctx['url'].contains('Weapons.aspx') || ctx['url'].contains('Equipment.aspx') || ctx['url'].contains('Armor.aspx') || ctx['url'].contains('Shields.aspx'))",
         "ignore_missing": true,
         "ignore_failure": true
       }
@@ -210,6 +211,7 @@
         "patterns": [
           "Traditions %{DATA:traditions}\\n"
         ],
+        "if": "ctx['url'] != null && ctx['url'].contains('Spells.aspx')",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'traditions' from stripped_html"
@@ -222,6 +224,7 @@
           "Bloodline %{DATA:bloodlines}\\n",
           "Bloodlines %{DATA:bloodlines}\\n"
         ],
+        "if": "ctx['url'] != null && ctx['url'].contains('Spells.aspx')",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'bloodlines' from stripped_html"
@@ -233,6 +236,7 @@
         "patterns": [
           "Cast %{DATA:casting_components}\\n"
         ],
+        "if": "ctx['url'] != null && ctx['url'].contains('Spells.aspx')",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'casting components' from stripped_html"
@@ -247,6 +251,7 @@
           "Range %{DATA:range}; Targets %{DATA:target}\\n",
           "Range %{DATA:range}\\n"
         ],
+        "if": "ctx['url'] != null && ctx['url'].contains('Spells.aspx')",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'range', 'area', and 'target' from stripped_html"
@@ -258,6 +263,7 @@
         "patterns": [
           "Saving Throw %{DATA:save}\\n"
         ],
+        "if": "ctx['url'] != null && ctx['url'].contains('Spells.aspx')",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'save' from stripped_html"
@@ -269,6 +275,7 @@
         "patterns": [
           "Deities %{DATA:deities}\\n"
         ],
+        "if": "ctx['url'] != null && (ctx['url'].contains('Spells.aspx') || ctx['url'].contains('Deities.aspx'))",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'deities' from stripped_html"
@@ -280,6 +287,7 @@
         "patterns": [
           "Duration %{DATA:duration}\\n"
         ],
+        "if": "ctx['url'] != null && (ctx['url'].contains('Spells.aspx') || ctx['url'].contains('Actions.aspx'))",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'duration' from stripped_html"
@@ -291,6 +299,7 @@
         "patterns": [
           "Spell List %{DATA:spell_list}\\n"
         ],
+        "if": "ctx['url'] != null && ctx['url'].contains('Spells.aspx')",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'spell_list' from stripped_html"
@@ -302,6 +311,7 @@
         "patterns": [
           "\\nHands %{NUMBER:hands}\\n"
         ],
+        "if": "ctx['url'] != null && (ctx['url'].contains('Weapons.aspx') || ctx['url'].contains('Equipment.aspx'))",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'hands' from stripped_html"
@@ -313,6 +323,7 @@
         "patterns": [
           "Usage %{DATA:usage};"
         ],
+        "if": "ctx['url'] != null && (ctx['url'].contains('Equipment.aspx') || ctx['url'].contains('Armor.aspx'))",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'usage' (equipment slot) from stripped_html"
@@ -324,6 +335,7 @@
         "patterns": [
           "Bulk %{DATA:bulk}[;\\n]"
         ],
+        "if": "ctx['url'] != null && (ctx['url'].contains('Weapons.aspx') || ctx['url'].contains('Equipment.aspx') || ctx['url'].contains('Armor.aspx'))",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'bulk' from stripped_html"
@@ -345,6 +357,7 @@
           "Hardness %{NUMBER:hardness}, HP %{NUMBER:durability}, BT %{NUMBER:break_threshold}",
           "Hardness %{NUMBER:hardness}, HP %{NUMBER:durability} \\(BT %{NUMBER:break_threshold}\\)"
         ],
+        "if": "ctx['url'] != null && (ctx['url'].contains('Shields.aspx') || ctx['url'].contains('Equipment.aspx'))",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts 'hardness', 'durability' (HP), and 'break_threshold' (BT) from stripped_html"
@@ -478,6 +491,7 @@
         "patterns": [
           "<span style=\\\"margin-left:auto; margin-right:0\\\">Item %{NUMBER:item_level}"
         ],
+        "if": "ctx['url'] != null && (ctx['url'].contains('Equipment.aspx') || ctx['url'].contains('Shields.aspx') || ctx['url'].contains('Weapons.aspx'))",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts item level from Equipment/Shields pages"
@@ -489,6 +503,7 @@
         "patterns": [
           "<span style=\\\"margin-left:auto; margin-right:0\\\">Feat %{NUMBER:feat_level}"
         ],
+        "if": "ctx['url'] != null && ctx['url'].contains('Feats.aspx')",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts feat level from Feats pages"
@@ -500,6 +515,7 @@
         "patterns": [
           "<span style=\\\"margin-left:auto; margin-right:0\\\">Creature %{NUMBER:creature_level}"
         ],
+        "if": "ctx['url'] != null && ctx['url'].contains('Monsters.aspx')",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts creature level from margin-left:auto span on Monsters pages"
@@ -511,6 +527,7 @@
         "patterns": [
           "<span class=\\\"traitsize\\\"><a href[^>]+>%{DATA:creature_size}</a>"
         ],
+        "if": "ctx['url'] != null && ctx['url'].contains('Monsters.aspx')",
         "ignore_missing": true,
         "ignore_failure": true,
         "description": "Extracts creature size from traitsize span on Monsters pages"
@@ -519,6 +536,7 @@
     {
       "script": {
         "source": "if (ctx['full_html'] != null && ctx['full_html'].contains('<b>Prerequisites</b>')) { ctx['prerequisites_flag'] = 'yes'; }",
+        "if": "ctx['url'] != null && ctx['url'].contains('Feats.aspx')",
         "ignore_failure": true,
         "description": "Sets prerequisites_flag when full_html contains a Prerequisites stat block label"
       }
@@ -526,6 +544,7 @@
     {
       "script": {
         "source": "if (ctx['full_html'] != null) { def m = /<b>Requirements<\\/b>([\\s\\S]*?)<hr/.matcher(ctx['full_html']); if (m.find()) { ctx['requirements'] = m.group(1).replaceAll('<[^>]+>', '').trim(); } }",
+        "if": "ctx['url'] != null && ctx['url'].contains('Actions.aspx')",
         "ignore_failure": true,
         "description": "Extracts requirements text from <b>Requirements</b>...<hr stat block pattern in full_html"
       }
