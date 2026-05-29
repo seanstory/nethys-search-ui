@@ -59,8 +59,23 @@ if [[ "$URL_META_COUNT" -gt 200000 ]]; then
 fi
 echo
 
+# Content hash constraint health
+# When orphaned constraint entries accumulate, they block re-indexing of changed pages.
+# Healthy: constraint count ≈ content_metadata count. If constraint >> metadata, run fix-content-hash-constraints.sh.
+http_call GET "${ES_HOST}/.ent-search-actastic-crawler2_content_metadata-configuration_oid-content_hash-unique-constraint/_count" "$AUTH"
+CONSTRAINT_COUNT=$(echo "$HTTP_BODY" | python3 -c "import json,sys; print(json.load(sys.stdin)['count'])")
+http_call GET "${ES_HOST}/.ent-search-actastic-crawler2_content_metadata/_count" "$AUTH"
+METADATA_COUNT=$(echo "$HTTP_BODY" | python3 -c "import json,sys; print(json.load(sys.stdin)['count'])")
+ORPHANED_ESTIMATE=$((CONSTRAINT_COUNT - METADATA_COUNT))
+echo "Content hash constraints: $CONSTRAINT_COUNT (content_metadata docs: $METADATA_COUNT, orphaned estimate: $ORPHANED_ESTIMATE)"
+if [[ "$ORPHANED_ESTIMATE" -gt 5000 ]]; then
+  echo "WARNING: Large number of orphaned constraints — run script/fix-content-hash-constraints.sh --confirm to clean up"
+fi
+echo
+
 echo "=== Summary ==="
 echo "  Total documents:            $TOTAL"
 echo "  Session-token URL docs:     $SESSION_COUNT"
 echo "  Page Not Found title docs:  $PNF_COUNT"
 echo "  URL metadata records:       $URL_META_COUNT"
+echo "  Constraint orphan estimate: $ORPHANED_ESTIMATE"
