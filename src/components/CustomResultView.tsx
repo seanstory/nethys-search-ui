@@ -51,6 +51,7 @@ export const CustomResultView = ({
     onClickLink: () => void;
 }) => {
     const numActions: string | undefined = result.num_actions?.raw;
+    const isLegacy: boolean = !!result.is_legacy?.raw;
     const category: string | undefined = result.category?.raw;
     const isEquipment: boolean = typeof category === "string" && EQUIPMENT_CATEGORIES.has(category);
     const isSpell: boolean = category === "Spells";
@@ -91,6 +92,23 @@ export const CustomResultView = ({
                     }}
                 >
                     {ACTION_COST_ICONS[numActions] ?? numActions}
+                </span>
+            )}
+            {isLegacy && (
+                <span
+                    title="Pre-remaster legacy content"
+                    style={{
+                        marginLeft: "0.5rem",
+                        fontSize: "0.75rem",
+                        background: "#555",
+                        color: "#fff",
+                        padding: "1px 6px",
+                        borderRadius: "3px",
+                        whiteSpace: "nowrap",
+                        flexShrink: 0,
+                    }}
+                >
+                    Legacy
                 </span>
             )}
             {isSpell && spellLevel && (

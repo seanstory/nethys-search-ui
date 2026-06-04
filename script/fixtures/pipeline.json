@@ -592,6 +592,15 @@
       }
     },
     {
+      "set": {
+        "field": "is_legacy",
+        "value": true,
+        "if": "ctx['full_html'] != null && ctx['full_html'].contains('legacy-content-warning')",
+        "ignore_failure": true,
+        "description": "Sets is_legacy=true for pre-remaster pages that carry the legacy-content-warning CSS class"
+      }
+    },
+    {
       "remove": {
         "field": "requirements",
         "if": "ctx['url'] == null || !ctx['url'].contains('Actions.aspx')",
