@@ -28,7 +28,7 @@
     {
       "gsub": {
         "field": "body_content",
-        "pattern": ".*\\|.* Source ",
+        "pattern": "^.*\\|.* Source ",
         "replacement": "",
         "ignore_missing": true,
         "ignore_failure": true
