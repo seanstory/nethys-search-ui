@@ -53,14 +53,11 @@
       }
     },
     {
-      "grok": {
-        "field": "title",
-        "patterns": [
-          "%{WORD:title_prefix} - %{WORD:sub_category} - %{WORD:category}",
-          "%{WORD:title_prefix} - %{WORD:category}"
-        ],
-        "ignore_missing": true,
-        "ignore_failure": true
+      "script": {
+        "source": "String t = ctx['title'];\nif (t != null) {\n  String[] parts = t.splitOnToken(' - ');\n  if (parts.length >= 2) {\n    ctx['category'] = parts[parts.length - 1].trim();\n  }\n  if (parts.length >= 3) {\n    ctx['sub_category'] = parts[parts.length - 2].trim();\n  }\n}",
+        "tag": "derive_category",
+        "ignore_failure": true,
+        "description": "<title> is 'Name - [Sub - ...] - Category': category is the last breadcrumb segment, sub_category the one before it"
       }
     },
     {
@@ -600,7 +597,6 @@
           "action_cost",
           "body_one",
           "body_two",
-          "title_prefix",
           "h1_link_id",
           "thumbnail_suffix",
           "spell_list",
