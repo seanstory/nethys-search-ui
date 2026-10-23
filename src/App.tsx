@@ -283,7 +283,7 @@ const config: SearchDriverOptions = {
   hasA11yNotifications: true,
   searchQuery: {
     facets: {
-      category: { type: "value", size: 30 },
+      category: { type: "value", size: 40 },
       sub_category: { type: "value", size: 30 },
       rarity: { type: "value", size: 10 },
       traits: { type: "value", size: 30 },
