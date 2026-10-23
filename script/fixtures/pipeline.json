@@ -126,28 +126,16 @@
       "grok": {
         "field": "full_html",
         "patterns": [
-          "<h1 class=\"title\">%{DATA}<a href=\"[A-Za-z]+\\.aspx\\?ID=%{NUMBER}[^\"]*\">%{DATA:better_title}</a>"
+          "<h1 class=\"title[^\"]*\"[^>]*>%{WITHIN_H1}<a href=\"/?[A-Za-z]+\\.aspx\\?ID=%{H1_LINK_ID:h1_link_id}[^\"]*\">\\s*%{H1_LINK_TEXT:better_title}\\s*</a>"
         ],
-        "if": "ctx['better_title'] == null || ctx['better_title'] == ''",
+        "pattern_definitions": {
+          "WITHIN_H1": "(?:(?!</h1>)[\\s\\S])*?",
+          "H1_LINK_ID": "[0-9]+",
+          "H1_LINK_TEXT": "[^<]+?"
+        },
         "ignore_missing": true,
         "ignore_failure": true,
-        "description": "Extracts better_title from h1.title in full_html when CSS extraction rule missed it"
-      }
-    },
-    {
-      "script": {
-        "source": "ctx['better_title'] = ctx['better_title'].replace(ctx['subtitle'], \"\");",
-        "if": "ctx['better_title']!=null && ctx['subtitle']!=null",
-        "tag": "remove_subtitle_from_title",
-        "ignore_failure": true,
-        "description": "Fix title"
-      }
-    },
-    {
-      "trim": {
-        "field": "better_title",
-        "ignore_missing": true,
-        "ignore_failure": true
+        "description": "Extracts the first ID link inside an h1.title (never past </h1>); used as the title only if it links to this page"
       }
     },
     {
@@ -159,41 +147,11 @@
       }
     },
     {
-      "set": {
-        "field": "title",
-        "ignore_empty_value": true,
-        "if": "ctx['better_title']!=null && ctx['title']!=null && !(ctx['title'].endsWith(\"Feats\") || ctx['title'].endsWith(\"Traits\"))",
+      "script": {
+        "source": "String t = ctx['orig_title'];\nif (t != null) {\n  int dash = t.indexOf(' - ');\n  if (dash > 0) {\n    t = t.substring(0, dash);\n  }\n}\nString b = ctx['better_title'];\nString linkId = ctx['h1_link_id'];\nString url = ctx['url'];\nif (b != null && linkId != null && url != null) {\n  int p = url.indexOf('?ID=');\n  if (p >= 0) {\n    int end = url.indexOf('&', p);\n    String urlId = end >= 0 ? url.substring(p + 4, end) : url.substring(p + 4);\n    if (urlId == linkId && b.trim() != '') {\n      t = b;\n    }\n  }\n}\nif (t != null) {\n  ctx['title'] = t.replace('&#x27;', \"'\").replace('&#39;', \"'\").replace('&quot;', '\"').replace('&amp;', '&').trim();\n}",
+        "tag": "derive_title",
         "ignore_failure": true,
-        "copy_from": "better_title"
-      }
-    },
-    {
-      "gsub": {
-        "field": "title",
-        "pattern": " - Classes",
-        "replacement": "",
-        "ignore_missing": true,
-        "ignore_failure": true
-      }
-    },
-    {
-      "gsub": {
-        "field": "title",
-        "pattern": " - Ancestries",
-        "replacement": "",
-        "ignore_missing": true,
-        "ignore_failure": true
-      }
-    },
-    {
-      "gsub": {
-        "field": "title",
-        "pattern": " - [A-Za-z]+$",
-        "replacement": "",
-        "if": "ctx['better_title'] == null || ctx['better_title'] == ''",
-        "ignore_missing": true,
-        "ignore_failure": true,
-        "description": "Strip trailing ' - Category' from title when better_title not available"
+        "description": "Title is the h1.title self-link text when present, else the <title> name before the first ' - ' breadcrumb; decodes HTML entities"
       }
     },
     {
@@ -643,6 +601,7 @@
           "body_one",
           "body_two",
           "title_prefix",
+          "h1_link_id",
           "thumbnail_suffix",
           "spell_list",
           "stripped_html",
