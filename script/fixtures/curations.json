@@ -1,24 +1,37 @@
 [
   {
-    "queries": [""],
+    "queries": [
+      ""
+    ],
     "promoted_urls": [
       "https://2e.aonprd.com/Classes.aspx?ID=56",
       "https://2e.aonprd.com/Classes.aspx?ID=64",
+      "https://2e.aonprd.com/Classes.aspx?ID=57",
+      "https://2e.aonprd.com/Classes.aspx?ID=32",
       "https://2e.aonprd.com/Classes.aspx?ID=58",
+      "https://2e.aonprd.com/Classes.aspx?ID=33",
       "https://2e.aonprd.com/Classes.aspx?ID=66",
+      "https://2e.aonprd.com/Classes.aspx?ID=34",
       "https://2e.aonprd.com/Classes.aspx?ID=65",
+      "https://2e.aonprd.com/Classes.aspx?ID=35",
       "https://2e.aonprd.com/Classes.aspx?ID=67",
       "https://2e.aonprd.com/Classes.aspx?ID=20",
       "https://2e.aonprd.com/Classes.aspx?ID=19",
       "https://2e.aonprd.com/Classes.aspx?ID=59",
       "https://2e.aonprd.com/Classes.aspx?ID=23",
-      "https://2e.aonprd.com/Classes.aspx?ID=17",
+      "https://2e.aonprd.com/Classes.aspx?ID=74",
       "https://2e.aonprd.com/Classes.aspx?ID=60",
+      "https://2e.aonprd.com/Classes.aspx?ID=75",
       "https://2e.aonprd.com/Classes.aspx?ID=61",
-      "https://2e.aonprd.com/Classes.aspx?ID=21",
+      "https://2e.aonprd.com/Classes.aspx?ID=68&Redirected=1",
+      "https://2e.aonprd.com/Classes.aspx?ID=36",
+      "https://2e.aonprd.com/Classes.aspx?ID=37",
+      "https://2e.aonprd.com/Classes.aspx?ID=76",
       "https://2e.aonprd.com/Classes.aspx?ID=62",
-      "https://2e.aonprd.com/Classes.aspx?ID=18",
-      "https://2e.aonprd.com/Classes.aspx?ID=22",
+      "https://2e.aonprd.com/Classes.aspx?ID=77",
+      "https://2e.aonprd.com/Classes.aspx?ID=63",
+      "https://2e.aonprd.com/Classes.aspx?ID=69&Redirected=1",
+      "https://2e.aonprd.com/Classes.aspx?ID=38",
       "https://2e.aonprd.com/Classes.aspx?ID=39"
     ],
     "hidden_urls": []
