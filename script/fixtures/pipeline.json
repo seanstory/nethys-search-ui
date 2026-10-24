@@ -520,6 +520,15 @@
     },
     {
       "script": {
+        "tag": "derive_source_citation",
+        "source": "String h = ctx['full_html']; int i = h.indexOf('<b>Source</b> '); int j = h.indexOf('<strong>Source</strong> '); int start = -1; if (i >= 0 && (j < 0 || i < j)) { start = i + 14; } else if (j >= 0) { start = j + 24; } if (start >= 0) { String s = h.substring(start, (int) Math.min(h.length(), start + 1500)); def m = /\\G(?:, ?)?<a [^>]{1,300}>(?:<i>)?([^<]{1,200})(?:<\\/i>)?<\\/a>/.matcher(s); List parts = new ArrayList(); while (m.find()) { String p = m.group(1).replace('&#x27;', \"'\").replace('&#39;', \"'\").replace('&quot;', '\"').replace('&rsquo;', '’').replace('&lt;', '<').replace('&gt;', '>').replace('&amp;', '&').trim(); if (p.length() > 0) { parts.add(p); } } if (parts.size() > 0) { ctx['source_citation'] = String.join(', ', parts); } }",
+        "if": "ctx['full_html'] != null",
+        "ignore_failure": true,
+        "description": "Extracts the full source citation(s) (e.g. 'Player Core 2 pg. 264', or 'Player Core pg. 145, Player Core 2 pg. 109' for reprints) from the first <b>Source</b> line (stat-block layout) or <strong>Source</strong> line (Rules-page layout) in full_html, HTML entities decoded. Unlike source_book (book name only, used as a facet), this keeps page numbers and all listed sources for display."
+      }
+    },
+    {
+      "script": {
         "description": "Compute spell_level_bucket: single-level buckets Level 1 through Level 10",
         "source": "if (ctx['spell_level'] != null) {\n  try {\n    int lvl = Integer.parseInt(ctx['spell_level'].trim());\n    if (lvl >= 1 && lvl <= 10) {\n      ctx['spell_level_bucket'] = 'Level ' + lvl;\n    }\n  } catch (Exception e) {}\n}",
         "ignore_failure": true
@@ -547,12 +556,12 @@
       }
     },
     {
-      "set": {
-        "field": "is_legacy",
-        "value": true,
-        "if": "ctx['full_html'] != null && ctx['full_html'].contains('legacy-content-warning')",
+      "script": {
+        "tag": "derive_edition",
+        "source": "String h = ctx['full_html']; if (h.contains('There is a Legacy version')) { ctx['edition'] = 'Remastered'; } else if (h.contains('legacy-content-warning') || h.contains('There is a Remastered version')) { ctx['edition'] = 'Legacy'; }",
+        "if": "ctx['full_html'] != null",
         "ignore_failure": true,
-        "description": "Sets is_legacy=true for pre-remaster pages that carry the legacy-content-warning CSS class"
+        "description": "Sets edition='Remastered' when the page links to a Legacy counterpart ('There is a Legacy version' banner), else 'Legacy' when it carries the legacy-content-warning heading or a 'There is a Remastered version' banner. Banner wins over the CSS class so embedded legacy blocks can't mislabel a remastered page. Single-edition pages are left unset. String value (not boolean) because App Search can't expose boolean fields."
       }
     },
     {

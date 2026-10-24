@@ -51,7 +51,11 @@ export const CustomResultView = ({
     onClickLink: () => void;
 }) => {
     const numActions: string | undefined = result.num_actions?.raw;
-    const isLegacy: boolean = !!result.is_legacy?.raw;
+    // edition is "Legacy" | "Remastered", or absent for single-edition pages
+    // (and for docs not yet re-crawled since the field was added).
+    const edition: string | undefined = result.edition?.raw;
+    // Prefer the full citation (with page numbers); fall back to the book name.
+    const sourceText: string | undefined = result.source_citation?.raw || result.source_book?.raw;
     const category: string | undefined = result.category?.raw;
     const isEquipment: boolean = typeof category === "string" && EQUIPMENT_CATEGORIES.has(category);
     const isSpell: boolean = category === "Spells";
@@ -94,7 +98,7 @@ export const CustomResultView = ({
                     {ACTION_COST_ICONS[numActions] ?? numActions}
                 </span>
             )}
-            {isLegacy && (
+            {edition === "Legacy" && (
                 <span
                     title="Pre-remaster legacy content"
                     style={{
@@ -102,13 +106,32 @@ export const CustomResultView = ({
                         fontSize: "0.75rem",
                         background: "#555",
                         color: "#fff",
-                        padding: "1px 6px",
+                        border: "1px solid #555",
+                        padding: "0 6px",
                         borderRadius: "3px",
                         whiteSpace: "nowrap",
                         flexShrink: 0,
                     }}
                 >
                     Legacy
+                </span>
+            )}
+            {edition === "Remastered" && (
+                <span
+                    title="Remastered content (a Legacy version also exists)"
+                    style={{
+                        marginLeft: "0.5rem",
+                        fontSize: "0.75rem",
+                        background: "#fff",
+                        color: "#8B0000",
+                        border: "1px solid #8B0000",
+                        padding: "0 6px",
+                        borderRadius: "3px",
+                        whiteSpace: "nowrap",
+                        flexShrink: 0,
+                    }}
+                >
+                    Remastered
                 </span>
             )}
             {isSpell && spellLevel && (
@@ -215,7 +238,17 @@ export const CustomResultView = ({
                 }
                 <li>
                     <span className="sui-result__key">category</span>
-                    <span className="sui-result__value">{result.category?.raw}</span>
+                    <span className="sui-result__value">
+                        {result.category?.raw}
+                        {sourceText && (
+                            <span
+                                title="Source"
+                                style={{ marginLeft: "0.75rem", color: "#777", fontSize: "0.85em", fontStyle: "italic" }}
+                            >
+                                {sourceText}
+                            </span>
+                        )}
+                    </span>
                 </li>
                 {
                     result.requirements?.raw &&
